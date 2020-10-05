@@ -12,8 +12,10 @@ import Utils.Stopwatch;
 import java.util.ArrayList;
 
 public abstract class Player extends GameObject {
-    // the health of the Player
-	protected float playerHealth;
+
+	// the health of the player
+	protected int playerHealth;
+	
 	// values that affect player movement
     // these should be set in a subclass
     protected float walkSpeed = 0;
@@ -50,7 +52,7 @@ public abstract class Player extends GameObject {
     // if true, player cannot be hurt by enemies (good for testing)
     protected boolean isInvincible = false;
 
-    public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName, float playerHealth) {
+    public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName, int playerHealth) {
         super(spriteSheet, x, y, startingAnimationName);
         facingDirection = Direction.RIGHT;
         airGroundState = AirGroundState.AIR;
@@ -297,10 +299,11 @@ public abstract class Player extends GameObject {
             	setPlayerState(PlayerState.JUMPING);
             	
             	if(hurtStopWatch.isTimeUp()) {
-            		
+
             		hurtStopWatch.setWaitTime(200);
-            		System.out.println(playerHealth);
-            		playerHealth--;
+            		if(playerHealth > 0) {
+            			playerHealth--;
+            		}
             	}
             }
             
@@ -392,5 +395,8 @@ public abstract class Player extends GameObject {
 
     public void addListener(PlayerListener listener) {
         listeners.add(listener);
+    }
+    public int getPlayerHealth() {
+    	return playerHealth;
     }
 }
