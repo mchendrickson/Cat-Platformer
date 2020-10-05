@@ -4,6 +4,7 @@ import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Screens.CreditsScreen;
+import Screens.InstructionsScreen;
 import Screens.MenuScreen;
 import Screens.PlayLevelScreen;
 
@@ -44,6 +45,8 @@ public class ScreenCoordinator extends Screen {
 					case MENU:
 						currentScreen = new MenuScreen(this);
 						break;
+					case INSTRUCTIONS:
+						currentScreen = new InstructionsScreen(this);
 					case LEVEL:
 						currentScreen = new PlayLevelScreen(this);
 						break;
@@ -51,6 +54,7 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new CreditsScreen(this);
 						break;
 				}
+				//System.out.println(currentScreen.getClass());
 				currentScreen.initialize();
 			}
 			previousGameState = gameState;
@@ -64,5 +68,8 @@ public class ScreenCoordinator extends Screen {
 	public void draw(GraphicsHandler graphicsHandler) {
 		// call the draw method for the currentScreen
 		currentScreen.draw(graphicsHandler);
+	}
+	public Screen getCurrentScreen() {
+		return currentScreen;
 	}
 }

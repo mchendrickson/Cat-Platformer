@@ -1,10 +1,15 @@
 package Engine;
 
 import GameObject.Rectangle;
+import Screens.CreditsScreen;
+import Screens.PlayLevelScreen;
 import SpriteFont.SpriteFont;
 import Utils.Colors;
 
 import javax.swing.*;
+
+import Game.ScreenCoordinator;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +34,7 @@ public class GamePanel extends JPanel {
 	private SpriteFont pauseLabel;
 	private KeyLocker keyLocker = new KeyLocker();
 	private final Key pauseKey = Key.P;
-
+	private ScreenCoordinator screenCoordinator;
 	/*
 	 * The JPanel and various important class instances are setup here
 	 */
@@ -41,7 +46,7 @@ public class GamePanel extends JPanel {
 		this.addKeyListener(Keyboard.getKeyListener());
 
 		graphicsHandler = new GraphicsHandler();
-
+		//System.out.println(secondScreenManager.getCurrentScreen().getClass());
 		screenManager = new ScreenManager();
 		
 		pauseLabel = new SpriteFont("PAUSE", 365, 280, "Comic Sans", 24, Color.white);
@@ -78,7 +83,7 @@ public class GamePanel extends JPanel {
 	}
 
 	public void update() {
-		if (Keyboard.isKeyDown(pauseKey) && !keyLocker.isKeyLocked(pauseKey)) {
+		if (Keyboard.isKeyDown(pauseKey) && !keyLocker.isKeyLocked(pauseKey) && isScreenPausable()) {
 			isGamePaused = !isGamePaused;
 			keyLocker.lockKey(pauseKey);
 		}
@@ -94,9 +99,11 @@ public class GamePanel extends JPanel {
 
 	public void draw() {
 		screenManager.draw(graphicsHandler);
-
-		// if game is paused, draw pause gfx over Screen gfx
-		if (isGamePaused) {
+		//System.out.println(screenCoordinator.getCurrentScreen().getClass());
+		// if game is paused and the screen is pausable, draw pause gfx over Screen gfx
+		//System.out.println(screenCoordinator.getCurrentScreen().getClass());
+		if (isGamePaused && isScreenPausable()) {
+			
 			pauseLabel.draw(graphicsHandler);
 			graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), new Color(0, 0, 0, 100));
 		}
@@ -111,5 +118,17 @@ public class GamePanel extends JPanel {
 		if (doPaint) {
 			draw();
 		}
+	}
+	public boolean isScreenPausable() {
+		if(screenCoordinator.getCurrentScreen() instanceof PlayLevelScreen) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	public void setScreenCoordinator(ScreenCoordinator screenCoordinator) {
+		this.screenCoordinator = screenCoordinator;
+		
 	}
 }
