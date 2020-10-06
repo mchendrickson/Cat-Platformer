@@ -1,7 +1,6 @@
 package Maps;
 
 import Enemies.BugEnemy;
-import Enemies.Coin;
 import Enemies.DinosaurEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
@@ -27,7 +26,6 @@ public class TestMap extends Map {
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));
         enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
-        enemies.add(new Coin(0.0f, 0.0f));
         return enemies;
     }
 
