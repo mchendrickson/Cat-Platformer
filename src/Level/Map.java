@@ -176,6 +176,14 @@ public abstract class Map {
         this.width = width;
     }
 
+    public int getEndBound() {
+        return endBoundX;
+    }
+
+    public void setEndBound(int endWidth) {
+        this.endBoundX = endWidth;
+    }
+
     public int getHeight() {
         return height;
     }
