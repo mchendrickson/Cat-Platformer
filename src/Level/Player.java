@@ -91,6 +91,8 @@ public abstract class Player extends GameObject {
         else if (levelState == LevelState.PLAYER_DEAD) {
             updatePlayerDead();
         }
+
+        checkBounds();
     }
 
     // add gravity to player, which is a downward force
@@ -376,4 +378,19 @@ public abstract class Player extends GameObject {
     public void addListener(PlayerListener listener) {
         listeners.add(listener);
     }
+
+    public void checkBounds() {
+    	if (levelState == LevelState.LEVEL_COMPLETED) {
+
+    	}
+    	else {
+    		if (getX() < 0) {
+    			setX(0);
+    		}
+    		if (getX() > getEndBound() - 70) {
+    			setX(getEndBound() - 70);
+    		}
+    	}
+    }
+
 }
