@@ -14,11 +14,16 @@ import Utils.Direction;
 import Utils.Point;
 import Utils.Stopwatch;
 
-public class Coins extends Enemy{
+public class Coin extends Enemy{
 
-	public Coins(BufferedImage image, float x, float y) {
-		super("file:///C:/Users/andre/eclipse-workspace/SER-225-Game-Master/Resources/coin_flat.png", 0, 0);
+	public Coin(float x, float y) {
+		super(ImageLoader.load("file:///C:/Users/andre/eclipse-workspace/SER-225-Game-Master/Resources/coin_flat.png"), x, y);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void initialize()
+	{
+		
 	}
 
 }
