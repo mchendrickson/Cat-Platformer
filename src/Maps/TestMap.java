@@ -63,8 +63,8 @@ public class TestMap extends Map {
     
     public ArrayList<Collectable> loadCollectables() {
     	ArrayList<Collectable> collectables = new ArrayList<>();
-    	collectables.add(new Coin(0,0,"Coin.png",));
+    	collectables.add(new Coin(16, 16, 2));
+    	return collectables;
     }
     	
-    }
 }

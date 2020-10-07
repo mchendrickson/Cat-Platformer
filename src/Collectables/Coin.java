@@ -24,8 +24,8 @@ public class Coin extends Collectable{
 //	public Coin(BufferedImage image, Point location, float scale, ImageEffect imageEffect) {
 //        super(image, location.x, location.y, scale, imageEffect);
 //    }
-	public Coin(float x, float y, SpriteSheet spriteSheet, String startingAnimation) {
-        super(x, y, spriteSheet, startingAnimation);
+	public Coin(float x, float y, float scale) {
+        super(ImageLoader.load("Coin.png"), x, y, scale);
     }
 	
 	public void touchedPlayer(Player player) {
