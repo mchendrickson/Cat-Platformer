@@ -2,6 +2,7 @@ package Maps;
 
 import Enemies.BugEnemy;
 import Enemies.DinosaurEnemy;
+import Enemies.DragonEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
@@ -26,6 +27,7 @@ public class TestMap extends Map {
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));
         enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
+        enemies.add(new DragonEnemy(getPositionByTileIndex(16,2).addY(2), Direction.RIGHT));
         return enemies;
     }
 
