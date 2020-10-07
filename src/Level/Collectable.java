@@ -1,4 +1,4 @@
-package Enemies;
+package Level;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
@@ -8,9 +8,6 @@ import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
-import Level.Enemy;
-import Level.MapEntity;
-import Level.Player;
 import Utils.AirGroundState;
 import Utils.Direction;
 import Utils.Point;
