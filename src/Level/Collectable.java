@@ -1,17 +1,12 @@
 package Level;
+
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
-import Builders.FrameBuilder;
-import Engine.ImageLoader;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
-import Utils.AirGroundState;
-import Utils.Direction;
-import Utils.Point;
-import Utils.Stopwatch;
 
 public class Collectable extends MapEntity{
 
