@@ -14,6 +14,8 @@ import Utils.Point;
 
 import java.util.ArrayList;
 
+import Collectables.Coin;
+
 // Represents a test map to be used in a level
 public class TestMap extends Map {
 
@@ -61,7 +63,7 @@ public class TestMap extends Map {
     
     public ArrayList<Collectable> loadCollectables() {
     	ArrayList<Collectable> collectables = new ArrayList<>();
-    	//collectables.add(new Collectable())
+    	collectables.add(new Coin(0,0,"Coin.png",));
     }
     	
     }
