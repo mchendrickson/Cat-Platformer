@@ -39,6 +39,7 @@ public class MenuScreen extends Screen {
         keyTimer.setWaitTime(200);
         menuItemSelected = -1;
         keyLocker.lockKey(Key.SPACE);
+        
     }
 
     public void update() {

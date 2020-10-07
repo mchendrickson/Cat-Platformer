@@ -1,6 +1,7 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.KeyLocker;
 import Engine.Screen;
 import Engine.ScreenManager;
 import SpriteFont.SpriteFont;
@@ -10,7 +11,7 @@ import java.awt.*;
 // This class is for the level cleared screen
 public class LevelClearedScreen extends Screen {
     protected SpriteFont winMessage;
-
+    protected KeyLocker keyLocker;
     public LevelClearedScreen() {
     }
 

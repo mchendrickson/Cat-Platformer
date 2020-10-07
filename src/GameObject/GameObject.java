@@ -297,6 +297,14 @@ public class GameObject extends AnimatedSprite {
 		this.map = map;
 	}
 
+	public void setEndBound(int newEndBound) {
+		map.setEndBound(newEndBound);
+	}
+
+	public int getEndBound() {
+		return map.getEndBound();
+	}
+
 	@Override
 	public void draw(GraphicsHandler graphicsHandler) {
 		if (map != null) {

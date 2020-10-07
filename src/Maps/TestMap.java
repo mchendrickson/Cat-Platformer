@@ -1,7 +1,6 @@
 package Maps;
 
 import Enemies.BugEnemy;
-import Enemies.Collectable;
 import Enemies.DinosaurEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
@@ -27,7 +26,6 @@ public class TestMap extends Map {
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));
         enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
-        enemies.add(new Collectable(0.0f, 0.0f));
         return enemies;
     }
 
@@ -59,5 +57,12 @@ public class TestMap extends Map {
         npcs.add(new Walrus(getPositionByTileIndex(30, 10).subtract(new Point(0, 13)), this));
 
         return npcs;
+    }
+    
+    public ArrayList<Collectable> loadCollectables() {
+    	ArrayList<Collectable> collectables = new ArrayList<>();
+    	collectables.add(new Collectable())
+    }
+    	
     }
 }

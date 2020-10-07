@@ -1,5 +1,7 @@
 package Screens;
 
+import java.awt.Color;
+
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Game.GameState;
@@ -9,6 +11,7 @@ import Level.Player;
 import Level.PlayerListener;
 import Maps.TestMap;
 import Players.Cat;
+import SpriteFont.SpriteFont;
 import Utils.Stopwatch;
 
 // This class is for when the platformer game is actually being played
@@ -20,6 +23,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected Stopwatch screenTimer = new Stopwatch();
     protected LevelClearedScreen levelClearedScreen;
     protected LevelLoseScreen levelLoseScreen;
+    protected SpriteFont healthText;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -36,6 +40,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         this.player.addListener(this);
         this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         this.playLevelScreenState = PlayLevelScreenState.RUNNING;
+        
+        // add text
+        healthText = new SpriteFont("HEALTH: " + player.getPlayerHealth(), 50, 50, "Comic Sans", 30, new Color(49, 207, 240));
+        healthText.setOutlineColor(Color.black);
+        healthText.setOutlineThickness(3);
     }
 
     public void update() {
@@ -45,6 +54,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case RUNNING:
                 player.update();
                 map.update(player);
+                updateHealthText();
                 break;
             // if level has been completed, bring up level cleared screen
             case LEVEL_COMPLETED:
@@ -81,6 +91,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case PLAYER_DEAD:
                 map.draw(graphicsHandler);
                 player.draw(graphicsHandler);
+                healthText.draw(graphicsHandler);
                 break;
             case LEVEL_WIN_MESSAGE:
                 levelClearedScreen.draw(graphicsHandler);
@@ -109,6 +120,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         initialize();
     }
 
+    public void updateHealthText() {
+    	if(healthText.getText() != "HEALTH: " + player.getPlayerHealth()) {
+    		healthText.setText("HEALTH: " + player.getPlayerHealth());
+    	}
+    }
     public void goBackToMenu() {
         screenCoordinator.setGameState(GameState.MENU);
     }

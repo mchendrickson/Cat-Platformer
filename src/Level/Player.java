@@ -7,11 +7,16 @@ import GameObject.GameObject;
 import GameObject.SpriteSheet;
 import Utils.AirGroundState;
 import Utils.Direction;
+import Utils.Stopwatch;
 
 import java.util.ArrayList;
 
 public abstract class Player extends GameObject {
-    // values that affect player movement
+
+	// the health of the player
+	protected int playerHealth;
+	
+	// values that affect player movement
     // these should be set in a subclass
     protected float walkSpeed = 0;
     protected float gravity = 0;
@@ -32,6 +37,7 @@ public abstract class Player extends GameObject {
     protected AirGroundState airGroundState;
     protected AirGroundState previousAirGroundState;
     protected LevelState levelState;
+    protected Stopwatch hurtStopWatch;
 
     // classes that listen to player events can be added to this list
     protected ArrayList<PlayerListener> listeners = new ArrayList<>();
@@ -46,7 +52,7 @@ public abstract class Player extends GameObject {
     // if true, player cannot be hurt by enemies (good for testing)
     protected boolean isInvincible = false;
 
-    public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
+    public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName, int playerHealth) {
         super(spriteSheet, x, y, startingAnimationName);
         facingDirection = Direction.RIGHT;
         airGroundState = AirGroundState.AIR;
@@ -54,6 +60,8 @@ public abstract class Player extends GameObject {
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;
         levelState = LevelState.RUNNING;
+        this.playerHealth = playerHealth;
+        hurtStopWatch = new Stopwatch();
     }
 
     public void update() {
@@ -91,6 +99,8 @@ public abstract class Player extends GameObject {
         else if (levelState == LevelState.PLAYER_DEAD) {
             updatePlayerDead();
         }
+
+        checkBounds();
     }
 
     // add gravity to player, which is a downward force
@@ -288,7 +298,19 @@ public abstract class Player extends GameObject {
         if (!isInvincible) {
             // if map entity is an enemy, kill player on touch
             if (mapEntity instanceof Enemy) {
-                levelState = LevelState.PLAYER_DEAD;
+            	setPlayerState(PlayerState.JUMPING);
+            	
+            	if(hurtStopWatch.isTimeUp()) {
+
+            		hurtStopWatch.setWaitTime(200);
+            		if(playerHealth > 0) {
+            			playerHealth--;
+            		}
+            	}
+            }
+            
+            if(playerHealth <= 0) {
+            	levelState = LevelState.PLAYER_DEAD;
             }
         }
     }
@@ -376,4 +398,23 @@ public abstract class Player extends GameObject {
     public void addListener(PlayerListener listener) {
         listeners.add(listener);
     }
+
+    public int getPlayerHealth() {
+    	return playerHealth;
+    }
+
+    public void checkBounds() {
+    	if (levelState == LevelState.LEVEL_COMPLETED) {
+
+    	}
+    	else {
+    		if (getX() < 0) {
+    			setX(0);
+    		}
+    		if (getX() > getEndBound() - 70) {
+    			setX(getEndBound() - 70);
+    		}
+    	}
+    }
+
 }
