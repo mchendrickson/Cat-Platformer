@@ -61,7 +61,7 @@ public class TestMap extends Map {
     
     public ArrayList<Collectable> loadCollectables() {
     	ArrayList<Collectable> collectables = new ArrayList<>();
-    	collectables.add(new Collectable())
+    	//collectables.add(new Collectable())
     }
     	
     }
