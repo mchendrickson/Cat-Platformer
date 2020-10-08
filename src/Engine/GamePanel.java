@@ -3,6 +3,7 @@ package Engine;
 import GameObject.Rectangle;
 import Screens.CreditsScreen;
 import Screens.PlayLevelScreen;
+import Screens.PlayLevelScreen.PlayLevelScreenState;
 import SpriteFont.SpriteFont;
 import Utils.Colors;
 
@@ -99,9 +100,8 @@ public class GamePanel extends JPanel {
 
 	public void draw() {
 		screenManager.draw(graphicsHandler);
-		//System.out.println(screenCoordinator.getCurrentScreen().getClass());
 		// if game is paused and the screen is pausable, draw pause gfx over Screen gfx
-		//System.out.println(screenCoordinator.getCurrentScreen().getClass());
+
 		if (isGamePaused && isScreenPausable()) {
 			
 			pauseLabel.draw(graphicsHandler);
@@ -120,7 +120,7 @@ public class GamePanel extends JPanel {
 		}
 	}
 	public boolean isScreenPausable() {
-		if(screenCoordinator.getCurrentScreen() instanceof PlayLevelScreen) {
+		if(screenCoordinator.getCurrentScreen() instanceof PlayLevelScreen && screenCoordinator.getScreenState() == PlayLevelScreenState.RUNNING) {
 			return true;
 		}else {
 			return false;
