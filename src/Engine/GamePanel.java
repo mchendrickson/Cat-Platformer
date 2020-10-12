@@ -120,7 +120,9 @@ public class GamePanel extends JPanel {
 		}
 	}
 	public boolean isScreenPausable() {
-		if(screenCoordinator.getCurrentScreen() instanceof PlayLevelScreen && screenCoordinator.getScreenState() == PlayLevelScreenState.RUNNING) {
+		if(screenCoordinator.getCurrentScreen() instanceof PlayLevelScreen 
+		&& screenCoordinator.getScreenState() == PlayLevelScreenState.RUNNING) {
+			
 			return true;
 		}else {
 			return false;
