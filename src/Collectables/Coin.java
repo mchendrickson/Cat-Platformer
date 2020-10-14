@@ -26,18 +26,22 @@ public class Coin extends Collectable{
 //    }
 	public Coin(float x, float y) {
 		super(x, y, new SpriteSheet(ImageLoader.load("Coin Sprite.png"), 32, 32), "DEFAULT");
+		
     }
+	public void initialize() {
+		super.initialize();
+	}
 	
 	public void touchedPlayer(Player player) {
         // if coin touches player, it disappears
         super.touchedPlayer(player);
-        this.mapEntityStatus = MapEntityStatus.REMOVED;
+        //this.mapEntityStatus = MapEntityStatus.REMOVED;
     }
 	
 	 public HashMap<String, Frame[]> getAnimations(SpriteSheet spriteSheet) {
 	        return new HashMap<String, Frame[]>() {{
 	            put("DEFAULT", new Frame[]{
-	                    new FrameBuilder(spriteSheet.getSprite(0, 0), 0)
+	                    new FrameBuilder(spriteSheet.getSprite(0, 0), 100)
 	                            .withScale(3)
 	                            .withBounds(1, 1, 5, 5)
 	                            .build()
