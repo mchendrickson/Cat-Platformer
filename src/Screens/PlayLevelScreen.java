@@ -130,7 +130,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     }
 
     // This enum represents the different states this screen can be in
-    private enum PlayLevelScreenState {
-        RUNNING, LEVEL_COMPLETED, PLAYER_DEAD, LEVEL_WIN_MESSAGE, LEVEL_LOSE_MESSAGE
+    public enum PlayLevelScreenState {
+        RUNNING, LEVEL_COMPLETED, PLAYER_DEAD, LEVEL_WIN_MESSAGE, LEVEL_LOSE_MESSAGE, NOT_RUNNING;
     }
 }
