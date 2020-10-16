@@ -90,27 +90,7 @@ public class Camera extends Rectangle {
         }
     }
 
-    private ArrayList<Collectable> loadActiveCollectables() {
-    	ArrayList<Collectable> activeCollectables = new ArrayList<>();
-        for (int i = map.getCollectables().size() - 1; i >= 0; i--) {
-            Collectable collectable = map.getCollectables().get(i);
-
-            if (isMapEntityActive(collectable)) {
-                activeCollectables.add(collectable);
-                if (collectable.mapEntityStatus == MapEntityStatus.INACTIVE) {
-                	collectable.setMapEntityStatus(MapEntityStatus.ACTIVE);
-                }
-            } else if (collectable.getMapEntityStatus() == MapEntityStatus.ACTIVE) {
-            	collectable.setMapEntityStatus(MapEntityStatus.INACTIVE);
-                if (collectable.isRespawnable()) {
-                	collectable.initialize();
-                }
-            } else if (collectable.getMapEntityStatus() == MapEntityStatus.REMOVED) {
-                map.getCollectables().remove(i);
-            }
-        }
-        return activeCollectables;
-	}
+   
 
 	// determine which enemies are active (within range of the camera)
     // if enemy is currently active and was also active last frame, nothing special happens and enemy is included in active list
@@ -140,6 +120,29 @@ public class Camera extends Rectangle {
         }
         return activeEnemies;
     }
+    
+    //The same as above but applied to the collectables
+    private ArrayList<Collectable> loadActiveCollectables() {
+    	ArrayList<Collectable> activeCollectables = new ArrayList<>();
+        for (int i = map.getCollectables().size() - 1; i >= 0; i--) {
+            Collectable collectable = map.getCollectables().get(i);
+
+            if (isMapEntityActive(collectable)) {
+                activeCollectables.add(collectable);
+                if (collectable.mapEntityStatus == MapEntityStatus.INACTIVE) {
+                	collectable.setMapEntityStatus(MapEntityStatus.ACTIVE);
+                }
+            } else if (collectable.getMapEntityStatus() == MapEntityStatus.ACTIVE) {
+            	collectable.setMapEntityStatus(MapEntityStatus.INACTIVE);
+                if (collectable.isRespawnable()) {
+                	collectable.initialize();
+                }
+            } else if (collectable.getMapEntityStatus() == MapEntityStatus.REMOVED) {
+                map.getCollectables().remove(i);
+            }
+        }
+        return activeCollectables;
+	}
 
     // determine which enhanced map tiles are active (within range of the camera)
     // if enhanced map tile is currently active and was also active last frame, nothing special happens and enhanced map tile is included in active list
