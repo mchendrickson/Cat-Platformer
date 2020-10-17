@@ -53,6 +53,8 @@ public abstract class Player extends GameObject {
     protected Key MOVE_LEFT_KEY2 = Key.A;
     protected Key MOVE_RIGHT_KEY2 = Key.D;
     protected Key CROUCH_KEY2 = Key.S;
+    
+    protected Key ENTER_KEY = Key.ENTER;
 
     // if true, player cannot be hurt by enemies (good for testing)
     protected boolean isInvincible = false;
@@ -128,9 +130,35 @@ public abstract class Player extends GameObject {
             case JUMPING:
                 playerJumping();
                 break;
+            case ATTACKING:
+            	playerAttacking();
+            	break;
         }
     }
 
+    protected void playerAttacking() {
+    	 // sets animation to a STAND animation based on which way player is facing
+        currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
+
+        // if walk left or walk right key is pressed, player enters WALKING state
+        if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_LEFT_KEY2) || Keyboard.isKeyDown(MOVE_RIGHT_KEY2)) {
+            playerState = PlayerState.WALKING;
+        }
+
+        // if jump key is pressed, player enters JUMPING state
+        else if ((Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY)) || (Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
+            keyLocker.lockKey(JUMP_KEY);
+            playerState = PlayerState.JUMPING;
+        }
+
+        // if crouch key is pressed, player enters CROUCHING state
+        else if (Keyboard.isKeyDown(CROUCH_KEY) || Keyboard.isKeyDown(CROUCH_KEY2)) {
+            playerState = PlayerState.CROUCHING;
+            
+        }
+    	
+    }
+    
     // player STANDING state logic
     protected void playerStanding() {
         // sets animation to a STAND animation based on which way player is facing
@@ -150,6 +178,11 @@ public abstract class Player extends GameObject {
         // if crouch key is pressed, player enters CROUCHING state
         else if (Keyboard.isKeyDown(CROUCH_KEY) || Keyboard.isKeyDown(CROUCH_KEY2)) {
             playerState = PlayerState.CROUCHING;
+         
+        // TIME TO ATTACK :)
+        }else if(Keyboard.isKeyDown(ENTER_KEY)) {
+        	playerState = PlayerState.ATTACKING;
+        	System.out.println("Attack!");
         }
     }
 
