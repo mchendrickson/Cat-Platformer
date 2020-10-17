@@ -45,7 +45,7 @@ public class Collectable extends MapEntity{
 
 	    public void update(Player player) {
 	        super.update();
-	        if (intersects(player)) {
+	        if (player != null && intersects(player)) {
 	            touchedPlayer(player);
 	        }
 	    }

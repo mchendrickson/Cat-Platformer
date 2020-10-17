@@ -48,6 +48,7 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case INSTRUCTIONS:
 						currentScreen = new InstructionsScreen(this);
+						break;
 					case LEVEL:
 						currentScreen = new PlayLevelScreen(this);
 						break;
