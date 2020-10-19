@@ -16,6 +16,9 @@ public abstract class Player extends GameObject {
 	// the health of the player
 	protected int playerHealth;
 	
+	// the coins the player has
+	protected int playerCoin;
+	
 	// values that affect player movement
     // these should be set in a subclass
     protected float walkSpeed = 0;
@@ -57,7 +60,7 @@ public abstract class Player extends GameObject {
     // if true, player cannot be hurt by enemies (good for testing)
     protected boolean isInvincible = false;
 
-    public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName, int playerHealth) {
+    public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName, int playerHealth, int playerCoin) {
         super(spriteSheet, x, y, startingAnimationName);
         facingDirection = Direction.RIGHT;
         airGroundState = AirGroundState.AIR;
@@ -67,6 +70,7 @@ public abstract class Player extends GameObject {
         levelState = LevelState.RUNNING;
         this.playerHealth = playerHealth;
         hurtStopWatch = new Stopwatch();
+        this.playerCoin = playerCoin;
     }
 
     public void update() {
@@ -322,7 +326,10 @@ public abstract class Player extends GameObject {
             }
         }
     }
-
+    public void incrementCoin(MapEntity mapEntity) {
+    	
+    	playerCoin++;
+    }
     // other entities can call this to tell the player they beat a level
     public void completeLevel() {
         levelState = LevelState.LEVEL_COMPLETED;
@@ -409,6 +416,10 @@ public abstract class Player extends GameObject {
 
     public int getPlayerHealth() {
     	return playerHealth;
+    }
+    
+    public int getPlayerCoin() {
+    	return playerCoin;
     }
 
     public void checkBounds() {

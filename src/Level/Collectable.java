@@ -52,7 +52,7 @@ public class Collectable extends MapEntity{
 
 	    // A subclass can override this method to specify what it does when it touches the player
 	    public void touchedPlayer(Player player) {
-	        player.hurtPlayer(this);
+	        player.incrementCoin(this);
 	    	
 	    }
 	
