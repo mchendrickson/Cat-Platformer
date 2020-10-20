@@ -7,6 +7,7 @@ import Screens.CreditsScreen;
 import Screens.InstructionsScreen;
 import Screens.MenuScreen;
 import Screens.PlayLevelScreen;
+import Screens.PlayLevelScreen.PlayLevelScreenState;
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -15,7 +16,7 @@ import Screens.PlayLevelScreen;
 public class ScreenCoordinator extends Screen {
 	// currently shown Screen
 	protected Screen currentScreen = new DefaultScreen();
-
+	protected PlayLevelScreenState currentPlayableState = PlayLevelScreenState.NOT_RUNNING;
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
 	protected GameState gameState;
 	protected GameState previousGameState;
@@ -47,6 +48,7 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case INSTRUCTIONS:
 						currentScreen = new InstructionsScreen(this);
+						break;
 					case LEVEL:
 						currentScreen = new PlayLevelScreen(this);
 						break;
@@ -62,6 +64,11 @@ public class ScreenCoordinator extends Screen {
 			// call the update method for the currentScreen
 			currentScreen.update();
 		} while (previousGameState != gameState);
+	}
+	public PlayLevelScreenState getScreenState() {
+		PlayLevelScreen temp;
+		temp = (PlayLevelScreen)currentScreen;
+		return temp.getPlayLevelScreenState();
 	}
 
 	@Override

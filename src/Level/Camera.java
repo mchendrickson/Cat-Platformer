@@ -26,6 +26,7 @@ public class Camera extends Rectangle {
     private ArrayList<Enemy> activeEnemies = new ArrayList<>();
     private ArrayList<EnhancedMapTile> activeEnhancedMapTiles = new ArrayList<>();
     private ArrayList<NPC> activeNPCs = new ArrayList<>();
+    private ArrayList<Collectable> activeCollectables = new ArrayList<>();
 
     // determines how many tiles off screen an entity can be before it will be deemed inactive and not included in the update/draw cycles until it comes back in range
     private final int UPDATE_OFF_SCREEN_RANGE = 4;
@@ -71,7 +72,11 @@ public class Camera extends Rectangle {
         activeEnemies = loadActiveEnemies();
         activeEnhancedMapTiles = loadActiveEnhancedMapTiles();
         activeNPCs = loadActiveNPCs();
-
+        activeCollectables = loadActiveCollectables();
+        
+        for(Collectable collectable: activeCollectables) {
+        	collectable.update(player);
+        }
         for (Enemy enemy : activeEnemies) {
             enemy.update(player);
         }
@@ -85,7 +90,9 @@ public class Camera extends Rectangle {
         }
     }
 
-    // determine which enemies are active (within range of the camera)
+   
+
+	// determine which enemies are active (within range of the camera)
     // if enemy is currently active and was also active last frame, nothing special happens and enemy is included in active list
     // if enemy is currently active but last frame was inactive, it will have its status set to active and enemy is included in active list
     // if enemy is currently inactive but last frame was active, it will have its status set to inactive, have its initialize method called if its respawnable
@@ -113,6 +120,29 @@ public class Camera extends Rectangle {
         }
         return activeEnemies;
     }
+    
+    //The same as above but applied to the collectables
+    private ArrayList<Collectable> loadActiveCollectables() {
+    	ArrayList<Collectable> activeCollectables = new ArrayList<>();
+        for (int i = map.getCollectables().size() - 1; i >= 0; i--) {
+            Collectable collectable = map.getCollectables().get(i);
+
+            if (isMapEntityActive(collectable)) {
+                activeCollectables.add(collectable);
+                if (collectable.mapEntityStatus == MapEntityStatus.INACTIVE) {
+                	collectable.setMapEntityStatus(MapEntityStatus.ACTIVE);
+                }
+            } else if (collectable.getMapEntityStatus() == MapEntityStatus.ACTIVE) {
+            	collectable.setMapEntityStatus(MapEntityStatus.INACTIVE);
+                if (collectable.isRespawnable()) {
+                	collectable.initialize();
+                }
+            } else if (collectable.getMapEntityStatus() == MapEntityStatus.REMOVED) {
+                map.getCollectables().remove(i);
+            }
+        }
+        return activeCollectables;
+	}
 
     // determine which enhanced map tiles are active (within range of the camera)
     // if enhanced map tile is currently active and was also active last frame, nothing special happens and enhanced map tile is included in active list
@@ -220,6 +250,11 @@ public class Camera extends Rectangle {
                 npc.draw(graphicsHandler);
             }
         }
+        for(Collectable collectable : activeCollectables) {
+        	if(containsDraw(collectable)) {
+        		collectable.draw(graphicsHandler);
+        	}
+        }
     }
 
     // checks if a game object's position falls within the camera's current radius
@@ -249,6 +284,10 @@ public class Camera extends Rectangle {
         return activeNPCs;
     }
 
+	public ArrayList<Collectable> getActiveCollectables() {
+		return activeCollectables;
+	}
+
     // gets end bound X position of the camera (start position is always 0)
     public float getEndBoundX() {
         return x + (width * tileWidth) + leftoverSpaceX;
@@ -258,4 +297,6 @@ public class Camera extends Rectangle {
     public float getEndBoundY() {
         return y + (height * tileHeight) + leftoverSpaceY;
     }
+
+
 }
