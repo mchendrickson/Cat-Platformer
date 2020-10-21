@@ -206,8 +206,8 @@ public abstract class Player extends GameObject {
             		facingDirection = Direction.RIGHT;
 						}
 
-        }
-
+        
+						
         } else if (Keyboard.isKeyUp(MOVE_LEFT_KEY) && Keyboard.isKeyUp(MOVE_RIGHT_KEY) && Keyboard.isKeyUp(MOVE_LEFT_KEY2) && Keyboard.isKeyUp(MOVE_RIGHT_KEY2)) {
             playerState = PlayerState.STANDING;
         }
