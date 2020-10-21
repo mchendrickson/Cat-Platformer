@@ -166,7 +166,7 @@ public abstract class Player extends GameObject {
 
         // if walk left or walk right key is pressed, player enters WALKING state
 
-        if ((Keyboard.isKeyDown(MOVE_LEFT_KEY) ^ Keyboard.isKeyDown(MOVE_RIGHT_KEY)) || (Keyboard.isKeyDown(MOVE_LEFT_KEY2) ^ Keyboard.isKeyDown(MOVE_RIGHT_KEY2))) {
+        if ((Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_LEFT_KEY2)) ^ (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY2))) {
 
             playerState = PlayerState.WALKING;
         }
@@ -193,7 +193,7 @@ public abstract class Player extends GameObject {
         // sets animation to a WALK animation based on which way player is facing
         currentAnimationName = facingDirection == Direction.RIGHT ? "WALK_RIGHT" : "WALK_LEFT";
 
-				if ((Keyboard.isKeyDown(MOVE_LEFT_KEY) ^ Keyboard.isKeyDown(MOVE_RIGHT_KEY)) || (Keyboard.isKeyDown(MOVE_LEFT_KEY2) ^ Keyboard.isKeyDown(MOVE_RIGHT_KEY2))) {
+				if ((Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_LEFT_KEY2)) ^ (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY2))) {
 						// if walk left key is pressed, move player to the left
 						if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_LEFT_KEY2)) {
             		moveAmountX -= walkSpeed;
@@ -283,7 +283,7 @@ public abstract class Player extends GameObject {
 
             // allows you to move left and right while in the air
 
-						if (Keyboard.isKeyDown(MOVE_LEFT_KEY) ^ Keyboard.isKeyDown(MOVE_RIGHT_KEY) || (Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
+						if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_LEFT_KEY2) ^ (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY2))) {
 								if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || (Keyboard.isKeyDown(MOVE_LEFT_KEY2)) {
                 		moveAmountX -= walkSpeed;
             		} else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || (Keyboard.isKeyDown(MOVE_RIGHT_KEY2)) {
