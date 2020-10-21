@@ -206,8 +206,8 @@ public abstract class Player extends GameObject {
             		facingDirection = Direction.RIGHT;
 						}
 
-        
-						
+
+
         } else if (Keyboard.isKeyUp(MOVE_LEFT_KEY) && Keyboard.isKeyUp(MOVE_RIGHT_KEY) && Keyboard.isKeyUp(MOVE_LEFT_KEY2) && Keyboard.isKeyUp(MOVE_RIGHT_KEY2)) {
             playerState = PlayerState.STANDING;
         }
@@ -284,9 +284,9 @@ public abstract class Player extends GameObject {
             // allows you to move left and right while in the air
 
 						if (Keyboard.isKeyDown(MOVE_LEFT_KEY) ^ Keyboard.isKeyDown(MOVE_RIGHT_KEY) || (Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
-								if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
+								if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || (Keyboard.isKeyDown(MOVE_LEFT_KEY2)) {
                 		moveAmountX -= walkSpeed;
-            		} else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
+            		} else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || (Keyboard.isKeyDown(MOVE_RIGHT_KEY2)) {
                 		moveAmountX += walkSpeed;
             		}
 						}
