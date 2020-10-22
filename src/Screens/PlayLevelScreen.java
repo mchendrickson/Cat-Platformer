@@ -10,6 +10,7 @@ import Level.Map;
 import Level.Player;
 import Level.PlayerListener;
 import Maps.TestMap;
+import Maps.TutorialMap;
 import Players.Cat;
 import SpriteFont.SpriteFont;
 import Utils.Stopwatch;
@@ -31,7 +32,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
     public void initialize() {
         // define/setup map
-        this.map = new TestMap();
+        this.map = new TutorialMap();
         map.reset();
 
         // setup player

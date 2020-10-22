@@ -68,6 +68,7 @@ public class NPC extends MapEntity {
 
     public void update(Player player) {
         super.update();
+        this.message = createMessage();
         checkTalkedTo(player);
     }
 
