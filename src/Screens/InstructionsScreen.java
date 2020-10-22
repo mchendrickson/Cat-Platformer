@@ -19,6 +19,7 @@ public class InstructionsScreen extends Screen {
     protected SpriteFont movementLabel;
     protected SpriteFont objectiveLabel;
     protected SpriteFont returnInstructionsLabel;
+    protected SpriteFont walrusText;
     protected SpriteSheet coin;
     
     public InstructionsScreen(ScreenCoordinator screenCoordinator) {
