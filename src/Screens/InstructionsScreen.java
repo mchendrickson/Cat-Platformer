@@ -18,6 +18,7 @@ public class InstructionsScreen extends Screen {
     protected SpriteFont instructionsLabel;
     protected SpriteFont movementLabel;
     protected SpriteFont objectiveLabel;
+    protected SpriteFont walrusLabel;
     protected SpriteFont returnInstructionsLabel;
     protected SpriteFont walrusText;
     protected SpriteSheet coin;
@@ -31,10 +32,27 @@ public class InstructionsScreen extends Screen {
         // setup graphics on screen (background map, spritefont text)
         background = new TitleScreenMap();
         background.setAdjustCamera(false);
-        instructionsLabel = new SpriteFont("Instructions", 15, 35, "Times New Roman", 30, Color.white);
-        movementLabel = new SpriteFont("Move using either the WASD keys or the Arrow keys", 130, 140, "Times New Roman", 20, Color.white);
-        objectiveLabel = new SpriteFont("Collect coins and avoid the enemies until you reach the golden cube to pass the level", 60, 220, "Times New Roman",20, Color.white);
-        returnInstructionsLabel = new SpriteFont("Press Space to return to the menu", 20, 560, "Times New Roman", 30, Color.white);
+        instructionsLabel = new SpriteFont("INSTRUCTIONS", 15, 35, "Comic Sans", 30, new Color(49, 207, 240));
+        movementLabel = new SpriteFont("Move using either the WASD keys or the Arrow keys", 15, 140, "Comic Sans", 20, new Color(255, 215, 0));
+        objectiveLabel = new SpriteFont("Collect coins and avoid the enemies until you reach the golden cube to pass the level", 15, 220, "Comic Sans",20, new Color(255, 215, 0));
+        walrusLabel = new SpriteFont("Press space to interact with the Walruses", 15, 300, "Comic Sans",20, new Color(255, 215, 0));
+        returnInstructionsLabel = new SpriteFont("Press Space to return to the menu", 15, 560, "Comic Sans", 30, new Color(49, 207, 240));
+        
+        instructionsLabel.setOutlineColor(Color.black);
+        instructionsLabel.setOutlineThickness(3);
+        
+        movementLabel.setOutlineColor(Color.black);
+        movementLabel.setOutlineThickness(2);
+        
+        objectiveLabel.setOutlineColor(Color.black);
+        objectiveLabel.setOutlineThickness(2);
+        
+        walrusLabel.setOutlineColor(Color.black);
+        walrusLabel.setOutlineThickness(2);
+        
+        returnInstructionsLabel.setOutlineColor(Color.black);
+        returnInstructionsLabel.setOutlineThickness(2);
+        
         keyLocker.lockKey(Key.SPACE);
     }
 
@@ -55,7 +73,8 @@ public class InstructionsScreen extends Screen {
     	background.draw(graphicsHandler);
     	instructionsLabel.draw(graphicsHandler);
         movementLabel.draw(graphicsHandler);
-        objectiveLabel.drawWithParsedNewLines(graphicsHandler);
+        objectiveLabel.draw(graphicsHandler);
+        walrusLabel.draw(graphicsHandler);
         returnInstructionsLabel.draw(graphicsHandler);
     }
 }
