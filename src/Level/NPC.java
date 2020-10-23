@@ -17,6 +17,7 @@ import java.util.HashMap;
 public class NPC extends MapEntity {
     protected boolean talkedTo = false;
     protected SpriteFont message;
+    protected SpriteFont interactMessage;
     protected int talkedToTime;
     protected Stopwatch timer = new Stopwatch();
 
@@ -68,6 +69,7 @@ public class NPC extends MapEntity {
 
     public void update(Player player) {
         super.update();
+        this.message = createMessage();
         checkTalkedTo(player);
     }
 
@@ -84,7 +86,7 @@ public class NPC extends MapEntity {
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
-        if (message != null && talkedTo) {
+        if (message != null) {
             drawMessage(graphicsHandler);
         }
     }

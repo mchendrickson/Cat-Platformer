@@ -15,16 +15,29 @@ import Utils.Point;
 import java.awt.*;
 import java.util.HashMap;
 
+
 // This class is for the walrus NPC
 public class Walrus extends NPC {
-
+	private String messageText;
+	private int textLength;
     public Walrus(Point location, Map map) {
-        super(location.x, location.y, new SpriteSheet(ImageLoader.load("Walrus.png"), 24, 24), "TAIL_DOWN", 5000);
+        super(location.x, location.y, new SpriteSheet(ImageLoader.load("Walrus.png"), 24, 24), "TAIL_DOWN", 5000); 
+        
+        setMessage("Hello!");
+        interactMessage = new SpriteFont("Press Space to Interact",getX(), getY() - 10, "Arial", 12, Color.BLACK);
+        textLength = 130;
     }
 
+    public void setMessage(String message) {
+    	messageText = message;
+    }
+    
+    public void setTextLength(int newTextLength) {
+    	textLength = newTextLength;
+    }
     @Override
     protected SpriteFont createMessage() {
-        return new SpriteFont("Hello!", getX(), getY() - 10, "Arial", 12, Color.BLACK);
+    	return new SpriteFont(messageText, getX(), getY() - 10, "Arial", 12, Color.BLACK);
     }
 
     public void update(Player player) {
@@ -55,6 +68,8 @@ public class Walrus extends NPC {
         }};
     }
 
+   
+    
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
@@ -62,11 +77,22 @@ public class Walrus extends NPC {
 
     @Override
     public void drawMessage(GraphicsHandler graphicsHandler) {
-        // draws a box with a border (think like a speech box)
-        graphicsHandler.drawFilledRectangleWithBorder(Math.round(getCalibratedXLocation() - 2), Math.round(getCalibratedYLocation() - 24), 40, 25, Color.WHITE, Color.BLACK, 2);
+    	String tempMessageText = messageText;
+    	if(talkedTo) {
+    	// draws a box with a border (think like a speech box)
+        graphicsHandler.drawFilledRectangleWithBorder(Math.round(getCalibratedXLocation() - 2), Math.round(getCalibratedYLocation() - 24), textLength, 25, Color.WHITE, Color.BLACK, 2);
 
         // draws message "Hello" in the above speech box
         message.setLocation(getCalibratedXLocation() + 2, getCalibratedYLocation() - 8);
         message.draw(graphicsHandler);
+        }else {
+        
+        graphicsHandler.drawFilledRectangleWithBorder(Math.round(getCalibratedXLocation() - 2), Math.round(getCalibratedYLocation() - 24), 130, 25, new Color(50,50,50,100), Color.BLACK, 2);
+
+        // draws message "Hello" in the above speech box
+        interactMessage.setLocation(getCalibratedXLocation() + 2, getCalibratedYLocation() - 8);
+        interactMessage.draw(graphicsHandler);
+        }
+    	setMessage(tempMessageText);
     }
 }

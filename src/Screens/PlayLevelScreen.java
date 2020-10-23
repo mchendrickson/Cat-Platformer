@@ -1,6 +1,10 @@
 package Screens;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 import Engine.GraphicsHandler;
 import Engine.Screen;
@@ -10,6 +14,7 @@ import Level.Map;
 import Level.Player;
 import Level.PlayerListener;
 import Maps.TestMap;
+import Maps.TutorialMap;
 import Players.Cat;
 import SpriteFont.SpriteFont;
 import Utils.Stopwatch;
@@ -24,15 +29,19 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected LevelClearedScreen levelClearedScreen;
     protected LevelLoseScreen levelLoseScreen;
     protected SpriteFont healthText;
+    protected Queue<Map> mapList;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
+        mapList = new LinkedList<Map>();
+        mapList.add(new TutorialMap());
+        mapList.add(new TestMap());
     }
 
     public void initialize() {
         // define/setup map
-        this.map = new TestMap();
-        map.reset();
+        this.map = mapList.poll();
+        this.map.reset();
 
         // setup player
         this.player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -67,8 +76,15 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
             case LEVEL_WIN_MESSAGE:
                 if (screenTimer.isTimeUp()) {
                     levelClearedScreen = null;
-                    goBackToMenu();
+                    
+                    //Cycle through maps
+                    if(!mapList.isEmpty()) {
+                    	initialize();
+                    }else {
+                    	goBackToMenu();
+                    }   
                 }
+                
                 break;
             // if player died in level, bring up level lost screen
             case PLAYER_DEAD:

@@ -53,6 +53,7 @@ public abstract class Map {
 
     // lists to hold map entities that are a part of the map
     protected ArrayList<Enemy> enemies;
+    protected ArrayList<Collectable> collectables;
     protected ArrayList<EnhancedMapTile> enhancedMapTiles;
     protected ArrayList<NPC> npcs;
 
@@ -91,6 +92,11 @@ public abstract class Map {
         this.npcs = loadNPCs();
         for (NPC npc: this.npcs) {
             npc.setMap(this);
+        }
+        
+        this.collectables = loadCollectables();
+        for(Collectable collectable: this.collectables) {
+        	collectable.setMap(this);
         }
 
         this.camera = new Camera(0, 0, tileset.getScaledSpriteWidth(), tileset.getScaledSpriteHeight(), this);
@@ -264,6 +270,9 @@ public abstract class Map {
     protected ArrayList<NPC> loadNPCs() {
         return new ArrayList<>();
     }
+    protected ArrayList<Collectable> loadCollectables(){
+    	return new ArrayList<>();
+    }
 
     public Camera getCamera() {
         return camera;
@@ -271,6 +280,10 @@ public abstract class Map {
 
     public ArrayList<Enemy> getEnemies() {
         return enemies;
+    }
+    
+    public ArrayList<Collectable> getCollectables(){
+    	return collectables;
     }
     public ArrayList<EnhancedMapTile> getEnhancedMapTiles() {
         return enhancedMapTiles;
@@ -293,6 +306,12 @@ public abstract class Map {
     public ArrayList<NPC> getActiveNPCs() {
         return camera.getActiveNPCs();
     }
+    
+    //return all active collectables
+    public ArrayList<Collectable> getActiveCollectables() {
+		
+		return camera.getActiveCollectables();
+	}
 
     // add an enemy to the map's list of enemies
     public void addEnemy(Enemy enemy) {
@@ -312,6 +331,11 @@ public abstract class Map {
         this.npcs.add(npc);
     }
 
+    public void addCollectable(Collectable collectable) {
+    	collectable.setMap(this);
+    	this.collectables.add(collectable);
+    }
+    
     public void setAdjustCamera(boolean adjustCamera) {
         this.adjustCamera = adjustCamera;
     }
@@ -385,4 +409,6 @@ public abstract class Map {
     public void draw(GraphicsHandler graphicsHandler) {
         camera.draw(graphicsHandler);
     }
+
+	
 }
