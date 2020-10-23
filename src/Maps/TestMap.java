@@ -61,6 +61,7 @@ public class TestMap extends Map {
         return npcs;
     }
     
+    @Override
     public ArrayList<Collectable> loadCollectables() {
     	ArrayList<Collectable> collectables = new ArrayList<>();
     	collectables.add(new Coin(150, 360));
