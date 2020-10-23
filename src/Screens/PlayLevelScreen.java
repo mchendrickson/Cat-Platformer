@@ -133,7 +133,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     	}
     }
     public void updateCoinText() {
-    	if(healthText.getText() != "HEALTH: " + player.getPlayerCoin()) {
+    	if(coinText.getText() != "Coin: " + player.getPlayerCoin()) {
     		coinText.setText("Coins: " + player.getPlayerCoin());
     	}
     }
