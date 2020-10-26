@@ -30,6 +30,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     protected LevelLoseScreen levelLoseScreen;
     protected SpriteFont healthText;
     protected Queue<Map> mapList;
+    protected SpriteFont coinText;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -54,6 +55,10 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         healthText = new SpriteFont("HEALTH: " + player.getPlayerHealth(), 50, 50, "Comic Sans", 30, new Color(49, 207, 240));
         healthText.setOutlineColor(Color.black);
         healthText.setOutlineThickness(3);
+        
+        coinText = new SpriteFont("Coins: " + player.getPlayerHealth(), 50, 80, "Comic Sans", 30, new Color(237, 216, 73));
+        coinText.setOutlineColor(Color.black);
+        coinText.setOutlineThickness(3);
     }
 
     public void update() {
@@ -64,6 +69,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
                 player.update();
                 map.update(player);
                 updateHealthText();
+                updateCoinText();
                 break;
             // if level has been completed, bring up level cleared screen
             case LEVEL_COMPLETED:
@@ -108,6 +114,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
                 map.draw(graphicsHandler);
                 player.draw(graphicsHandler);
                 healthText.draw(graphicsHandler);
+                coinText.draw(graphicsHandler);
                 break;
             case LEVEL_WIN_MESSAGE:
                 levelClearedScreen.draw(graphicsHandler);
@@ -139,6 +146,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     public void updateHealthText() {
     	if(healthText.getText() != "HEALTH: " + player.getPlayerHealth()) {
     		healthText.setText("HEALTH: " + player.getPlayerHealth());
+    	}
+    }
+    public void updateCoinText() {
+    	if(coinText.getText() != "Coin: " + player.getPlayerCoin()) {
+    		coinText.setText("Coins: " + player.getPlayerCoin());
     	}
     }
     public void goBackToMenu() {
