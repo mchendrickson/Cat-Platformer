@@ -1,6 +1,7 @@
 package NPCs;
 
 import Builders.FrameBuilder;
+
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import GameObject.Frame;
@@ -15,16 +16,41 @@ import Utils.Point;
 import java.awt.*;
 import java.util.HashMap;
 
+
+
 // This class is for the walrus NPC
 public class Walrus extends NPC {
 
+	public int commentCount = 0;
+	
     public Walrus(Point location, Map map) {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load("Walrus.png"), 24, 24), "TAIL_DOWN", 5000);
     }
 
     @Override
     protected SpriteFont createMessage() {
-        return new SpriteFont("Hello!", getX(), getY() - 10, "Arial", 12, Color.BLACK);
+    	
+    	String message = "";
+    	    	
+    	switch(this.commentCount)
+    	{
+    	case 0:
+    		//return new SpriteFont("Hello!", getX(), getY() - 10, "Arial", 12, Color.BLACK);
+    		message = "Hello!";
+    		commentCount++;
+		case 1:
+    		//return new SpriteFont("You've got this!", getX(), getY() - 10, "Arial", 12, Color.BLACK);
+			message = "You've got this!";
+			commentCount++;
+		case 2:
+			message = "You're still here?";
+			commentCount++;
+    	}
+    	
+    	
+    	
+		return new SpriteFont(message, getX(), getY() - 10, "Arial", 12, Color.BLACK);
+        
     }
 
     public void update(Player player) {
