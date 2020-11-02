@@ -2,6 +2,8 @@ package Maps;
 
 import Enemies.BugEnemy;
 import Enemies.DinosaurEnemy;
+import Enemies.DragonEnemy;
+import Enemies.SkullEnemy;
 import Engine.ImageLoader;
 import EnhancedMapTiles.EndLevelBox;
 import EnhancedMapTiles.HorizontalMovingPlatform;
@@ -22,12 +24,14 @@ public class TestMap extends Map {
     public TestMap() {
         super("test_map.txt", new CommonTileset(), new Point(1, 11));
     }
-
+ 
     @Override
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));
         enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
+        enemies.add(new DragonEnemy(getPositionByTileIndex(13 ,9), Direction.LEFT));
+        enemies.add(new SkullEnemy(getPositionByTileIndex(12,9), Direction.LEFT));
         return enemies;
     }
 
