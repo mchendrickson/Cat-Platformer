@@ -192,9 +192,12 @@ public abstract class Player extends GameObject {
 		}
 
 		// if jump key is pressed, player enters JUMPING state
-		else if ((Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY))
-				|| (Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
+		else if ((Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY))) {
 			keyLocker.lockKey(JUMP_KEY);
+			playerState = PlayerState.JUMPING;
+		}
+		
+		else if ((Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
 			keyLocker.lockKey(JUMP_KEY2);
 			playerState = PlayerState.JUMPING;
 		}
@@ -238,9 +241,13 @@ public abstract class Player extends GameObject {
 			playerState = PlayerState.STANDING;
 
 		// if jump key is pressed, player enters JUMPING state
-		if ((Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY))
-				|| (Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
+		if ((Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY))) {
 			keyLocker.lockKey(JUMP_KEY);
+			playerState = PlayerState.JUMPING;
+		}
+		
+		if ((Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
+			keyLocker.lockKey(JUMP_KEY2);
 			playerState = PlayerState.JUMPING;
 		}
 
@@ -261,9 +268,12 @@ public abstract class Player extends GameObject {
 		}
 
 		// if jump key is pressed, player enters JUMPING state
-		if ((Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY))
-				|| (Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
+		if ((Keyboard.isKeyDown(JUMP_KEY) && !keyLocker.isKeyLocked(JUMP_KEY))) {
 			keyLocker.lockKey(JUMP_KEY);
+			playerState = PlayerState.JUMPING;
+		}
+		
+		if ((Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
 			keyLocker.lockKey(JUMP_KEY2);
 			playerState = PlayerState.JUMPING;
 		}
