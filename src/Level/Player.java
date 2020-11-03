@@ -423,7 +423,7 @@ public abstract class Player extends GameObject {
 		}
 		// move player to the right until it walks off screen
 		else if (map.getCamera().containsDraw(this)) {
-			currentAnimationName = "WALK_RIGHT";
+			currentAnimationName = "WALK_RIGHT";;
 			super.update();
 			moveXHandleCollision(walkSpeed);
 		} else {

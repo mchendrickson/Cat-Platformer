@@ -37,10 +37,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
         mapList = new LinkedList<Map>();
-        mapList.add(new PlatformMap());
         mapList.add(new TutorialMap());
+        mapList.add(new PlatformMap());
         mapList.add(new HillsMap());
         mapList.add(new TestMap());
+        
     }
 
     public void initialize() {
@@ -146,7 +147,9 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     public void resetLevel() {
         Queue tempMapList = new LinkedList<Map>();
         tempMapList.add(map);
-        tempMapList.add(mapList);
+        for(Map currMap : mapList) {
+        	tempMapList.add(currMap);
+        }
         mapList = tempMapList;
     	initialize();
     }

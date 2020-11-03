@@ -34,6 +34,10 @@ public class HillsMap extends Map{
         enemies.add(new DragonEnemy(getPositionByTileIndex(46, 16), Direction.RIGHT));
         enemies.add(new SkullEnemy(getPositionByTileIndex(90, 19), Direction.RIGHT));
         enemies.add(new SkullEnemy(getPositionByTileIndex(80, 19), Direction.LEFT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(112, 6), Direction.LEFT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(106, 9), Direction.LEFT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(102, 11), Direction.LEFT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(94, 15), Direction.LEFT));
         return enemies;
     }
    
