@@ -13,6 +13,8 @@ import Game.ScreenCoordinator;
 import Level.Map;
 import Level.Player;
 import Level.PlayerListener;
+import Maps.HillsMap;
+import Maps.PlatformMap;
 import Maps.TestMap;
 import Maps.TutorialMap;
 import Players.Cat;
@@ -35,6 +37,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
         mapList = new LinkedList<Map>();
+        mapList.add(new PlatformMap());
         mapList.add(new TutorialMap());
         mapList.add(new TestMap());
     }
@@ -140,7 +143,11 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     }
 
     public void resetLevel() {
-        initialize();
+        Queue tempMapList = new LinkedList<Map>();
+        tempMapList.add(map);
+        tempMapList.add(mapList);
+        mapList = tempMapList;
+    	initialize();
     }
 
     public void updateHealthText() {

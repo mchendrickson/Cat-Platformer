@@ -1,6 +1,8 @@
 package MapEditor;
 
 import Level.Map;
+import Maps.HillsMap;
+import Maps.PlatformMap;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
 import Maps.TutorialMap;
@@ -13,6 +15,8 @@ public class EditorMaps {
             add("TestMap");
             add("TitleScreen");
             add("TutorialMap");
+            add("PlatformMap");
+            add("HillsMap");
         }};
     }
 
@@ -24,6 +28,10 @@ public class EditorMaps {
                 return new TitleScreenMap();
             case "TutorialMap":
             	return new TutorialMap();
+            case "PlatformMap":
+            	return new PlatformMap();
+            case "HillsMap":
+            	return new HillsMap();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }
