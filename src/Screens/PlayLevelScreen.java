@@ -39,6 +39,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         mapList = new LinkedList<Map>();
         mapList.add(new PlatformMap());
         mapList.add(new TutorialMap());
+        mapList.add(new HillsMap());
         mapList.add(new TestMap());
     }
 

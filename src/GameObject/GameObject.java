@@ -304,6 +304,9 @@ public class GameObject extends AnimatedSprite {
 	public int getEndBound() {
 		return map.getEndBound();
 	}
+	public int getYEndBound() {
+		return map.getHeightPixels();
+	}
 
 	@Override
 	public void draw(GraphicsHandler graphicsHandler) {
