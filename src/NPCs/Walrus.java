@@ -2,8 +2,10 @@ package NPCs;
 
 import Builders.FrameBuilder;
 
+
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
+import Engine.Message;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
@@ -15,22 +17,38 @@ import Utils.Point;
 
 import java.awt.*;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+
 
 
 // This class is for the walrus NPC
 public class Walrus extends NPC {
 	private String messageText;
 	private int textLength;
+	private Queue<SpriteFont> messageQueue;
     public Walrus(Point location, Map map) {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load("Walrus.png"), 24, 24), "TAIL_DOWN", 5000);
 
         setMessage("Hello!");
         interactMessage = new SpriteFont("Press Space to Interact",getX(), getY() - 10, "Arial", 12, Color.BLACK);
         textLength = 130;
+        messageQueue = new LinkedList<SpriteFont>();
+        messageQueue.add(new SpriteFont("This is the first message", getX(), getY() - 10, "Arial", 12, Color.BLACK));
+        messageQueue.add(new SpriteFont("This is the second message", getX(), getY() - 10, "Arial", 12, Color.BLACK));
+        messageQueue.add(new SpriteFont("This is the third message", getX(), getY() - 10, "Arial", 12, Color.BLACK));        
+
     }
+    
 
     public void setMessage(String message) {
     	messageText = message;
+    }
+    
+    public void setMessage()
+    {
+    	interactMessage = messageQueue.peek();
+    	messageQueue.remove();
     }
 
     public void setTextLength(int newTextLength) {
@@ -95,5 +113,7 @@ public class Walrus extends NPC {
         interactMessage.draw(graphicsHandler);
         }
     	setMessage(tempMessageText);
+    	setMessage();
+    	
     }
 }
