@@ -5,6 +5,7 @@ import Maps.HillsMap;
 import Maps.PlatformMap;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
+import Maps.TreesMap;
 import Maps.TutorialMap;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class EditorMaps {
             add("TutorialMap");
             add("PlatformMap");
             add("HillsMap");
+            add("TreesMap");
         }};
     }
 
@@ -32,6 +34,8 @@ public class EditorMaps {
             	return new PlatformMap();
             case "HillsMap":
             	return new HillsMap();
+            case "TreesMap": 
+            	return new TreesMap();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }

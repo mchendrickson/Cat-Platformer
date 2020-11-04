@@ -16,6 +16,7 @@ import Level.PlayerListener;
 import Maps.HillsMap;
 import Maps.PlatformMap;
 import Maps.TestMap;
+import Maps.TreesMap;
 import Maps.TutorialMap;
 import Players.Cat;
 import SpriteFont.SpriteFont;
@@ -37,6 +38,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
         mapList = new LinkedList<Map>();
+        mapList.add(new TreesMap());
         mapList.add(new TutorialMap());
         mapList.add(new PlatformMap());
         mapList.add(new HillsMap());
