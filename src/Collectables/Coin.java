@@ -23,6 +23,10 @@ public class Coin extends Collectable{
 	public Coin(float x, float y) {
 		super(x, y, new SpriteSheet(ImageLoader.load("Coin Sprite.png"), 32, 32), "FLAT");
     }
+	
+	public Coin(Point location) {
+		super(location.x, location.y, new SpriteSheet(ImageLoader.load("Coin Sprite.png"), 32, 32), "FLAT");
+    }
 	public void initialize() {
 		super.initialize();
 	}

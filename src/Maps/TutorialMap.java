@@ -38,17 +38,17 @@ public class TutorialMap extends Map{
 	        
 	        Walrus secondWalrus = new Walrus(getPositionByTileIndex(20, 10).subtract(new Point(1, 9)), this);
 	        secondWalrus.setMessage("Great job! Here's a coin to collect along your journey!");
-	        secondWalrus.setTextLength(330);
+	        secondWalrus.setTextLength(300);
 	        npcs.add(secondWalrus);
 	        
 	        Walrus thirdWalrus = new Walrus(getPositionByTileIndex(32, 8).subtract(new Point(1, 9)), this);
-	        thirdWalrus.setMessage("Make sure to avoid enemies, as I haven't had time to implement combat yet!!!!!!");
-	        thirdWalrus.setTextLength(430);
+	        thirdWalrus.setMessage("Make sure to avoid enemies, as they will hurt you if you get too close!");
+	        thirdWalrus.setTextLength(385);
 	        npcs.add(thirdWalrus);
 	        
 	        Walrus fourthWalrus = new Walrus(getPositionByTileIndex(52, 9).subtract(new Point(1, 9)), this);
 	        fourthWalrus.setMessage("That's it for now, touch the gold cube to finish the level!");
-	        fourthWalrus.setTextLength(340);
+	        fourthWalrus.setTextLength(310);
 	        npcs.add(fourthWalrus);
 
 	        return npcs;

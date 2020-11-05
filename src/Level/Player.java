@@ -423,7 +423,7 @@ public abstract class Player extends GameObject {
 		}
 		// move player to the right until it walks off screen
 		else if (map.getCamera().containsDraw(this)) {
-			currentAnimationName = "WALK_RIGHT";
+			currentAnimationName = "WALK_RIGHT";;
 			super.update();
 			moveXHandleCollision(walkSpeed);
 		} else {
@@ -497,14 +497,16 @@ public abstract class Player extends GameObject {
 	}
 
 	public void checkBounds() {
-		if (levelState == LevelState.LEVEL_COMPLETED) {
-
-		} else {
+		if (levelState != LevelState.LEVEL_COMPLETED) {
 			if (getX() < 0) {
 				setX(0);
 			}
 			if (getX() > getEndBound() - 70) {
 				setX(getEndBound() - 70);
+			}
+			if(getY() > getYEndBound()) {
+				//Kill the player
+				levelState = LevelState.PLAYER_DEAD;
 			}
 		}
 	}
