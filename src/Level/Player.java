@@ -311,10 +311,23 @@ public abstract class Player extends GameObject {
 
             // if player is moving upwards, set player's animation to jump. if player moving downwards, set player's animation to fall
             if (previousY > Math.round(y)) {
-                currentAnimationName = facingDirection == Direction.RIGHT ? "JUMP_RIGHT" : "JUMP_LEFT";
+            	if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_LEFT_KEY2)){
+            		currentAnimationName = facingDirection == Direction.LEFT ? "JUMP_LEFT" : "JUMP_LEFT";
+            	}
+            	
+            	else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY2)){
+            		currentAnimationName = facingDirection == Direction.RIGHT ? "JUMP_RIGHT" : "JUMP_RIGHT";
+            	}
+     
             } else {
-                currentAnimationName = facingDirection == Direction.RIGHT ? "FALL_RIGHT" : "FALL_LEFT";
-            }
+            	if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_LEFT_KEY2)){
+        		currentAnimationName = facingDirection == Direction.LEFT ? "FALL_LEFT" : "FALL_LEFT";
+            	}
+            	
+            	else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY2)){
+            		currentAnimationName = facingDirection == Direction.RIGHT ? "FALL_RIGHT" : "FALL_RIGHT";
+            	}
+        	}
 
             // allows you to move left and right while in the air
 
@@ -336,7 +349,7 @@ public abstract class Player extends GameObject {
 
         // if player last frame was in air and this frame is now on ground, player enters STANDING state
         else if (previousAirGroundState == AirGroundState.AIR && airGroundState == AirGroundState.GROUND) {
-            playerState = PlayerState.STANDING;
+        	playerState = PlayerState.STANDING;
         }
     }
 
