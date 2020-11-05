@@ -45,7 +45,8 @@ public class Coin extends Collectable{
 	                            .build(),
 	                            
 	            });
-
+	            
+	           
 	        }};
 	    }
 	 

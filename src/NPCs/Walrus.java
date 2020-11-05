@@ -113,7 +113,7 @@ public class Walrus extends NPC {
         interactMessage.draw(graphicsHandler);
         }
     	setMessage(tempMessageText);
-    	setMessage();
+    	//setMessage();
     	
     }
 }
