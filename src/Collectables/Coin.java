@@ -47,7 +47,10 @@ public class Coin extends Collectable{
 	                            .withScale(3)
 	                            .withBounds(15, 10, 16, 16)
 	                            .build(),
-	                            
+//                        new FrameBuilder(spriteSheet.getSprite(1, 0), 200)
+//                                .withScale(3)
+//                                .withBounds(15, 10, 16, 16)
+//                                .build()
 	            });
 	            
 	           
