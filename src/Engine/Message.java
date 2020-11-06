@@ -10,8 +10,8 @@ public class Message {
 	
 	public Message(String content, int BackgroundSize)
 	{
-		content = this.content;
-		BackgroundSize = this.BackgroundSize;
+		this.content = content;
+		this.BackgroundSize = BackgroundSize;
 	}
 	
 	public String getContent()
