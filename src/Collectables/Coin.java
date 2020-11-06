@@ -43,14 +43,10 @@ public class Coin extends Collectable{
 	 public HashMap<String, Frame[]> getAnimations(SpriteSheet spriteSheet) {
 	        return new HashMap<String, Frame[]>() {{
 	            put("FLAT", new Frame[]{
-	                    new FrameBuilder(spriteSheet.getSprite(0, 0), 200)
+	                    new FrameBuilder(spriteSheet.getSprite(0, 0), 100)
 	                            .withScale(3)
 	                            .withBounds(15, 10, 16, 16)
 	                            .build(),
-//                        new FrameBuilder(spriteSheet.getSprite(1, 0), 200)
-//                                .withScale(3)
-//                                .withBounds(15, 10, 16, 16)
-//                                .build()
 	            });
 	            
 	           

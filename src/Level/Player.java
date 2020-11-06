@@ -120,6 +120,7 @@ public abstract class Player extends GameObject {
     	
     	playerCoin++;
     	
+    	//this makes it so that the health of the player increases once the player collects 4 coins
     	if (playerCoin == 4)
     	{
     		playerHealth = getPlayerHealth() + 1;
