@@ -8,9 +8,10 @@ public class Message {
 	private String content;
 	private int BackgroundSize;
 	
-	public Message(String content, int BackgroundSize, int x, int y)
+	public Message(String content, int BackgroundSize)
 	{
-		new SpriteFont(content, x, y - 10, "Arial", 12, Color.BLACK);
+		content = this.content;
+		BackgroundSize = this.BackgroundSize;
 	}
 	
 	public String getContent()
