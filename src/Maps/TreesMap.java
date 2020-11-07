@@ -2,7 +2,9 @@ package Maps;
 
 import java.util.ArrayList;
 
+import Collectables.Coin;
 import EnhancedMapTiles.EndLevelBox;
+import Level.Collectable;
 import Level.EnhancedMapTile;
 import Level.Map;
 import Tilesets.CommonTileset;
@@ -24,4 +26,16 @@ public class TreesMap extends Map{
 
         return enhancedMapTiles;
     }
+	
+	  @Override
+	    public ArrayList<Collectable> loadCollectables() {
+	    	ArrayList<Collectable> collectables = new ArrayList<>();
+	    	collectables.add(new Coin(150, 760));
+	    	collectables.add(new Coin(400, 760));
+	    	collectables.add(new Coin(400, 870));
+	    	collectables.add(new Coin(600, 760));
+	    	collectables.add(new Coin(800, 960));
+	    	collectables.add(new Coin(1100, 760));
+	    	return collectables;
+	    }
 }

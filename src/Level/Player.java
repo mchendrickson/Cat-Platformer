@@ -119,6 +119,14 @@ public abstract class Player extends GameObject {
 	public void incrementCoin(MapEntity mapEntity) {
     	
     	playerCoin++;
+    	
+    	/*this makes it so that the health of the 
+    	player increases once they collect 4 coins*/
+    	if (playerCoin == 4)
+    	{
+    		playerHealth = getPlayerHealth() + 1;
+    		playerCoin = 0;
+    	}
     }
 	
 	public int getPlayerCoin() {
