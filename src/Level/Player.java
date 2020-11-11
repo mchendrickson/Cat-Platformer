@@ -18,7 +18,7 @@ public abstract class Player extends GameObject {
 
 	// the coins the player has
 	protected int playerCoin;
-	
+
 	// values that affect player movement
 	// these should be set in a subclass
 	protected float walkSpeed = 0;
@@ -117,10 +117,10 @@ public abstract class Player extends GameObject {
 	}
 
 	public void incrementCoin(MapEntity mapEntity) {
-    	
+
     	playerCoin++;
-    	
-    	/*this makes it so that the health of the 
+
+    	/*this makes it so that the health of the
     	player increases once they collect 4 coins*/
     	if (playerCoin == 4)
     	{
@@ -128,9 +128,9 @@ public abstract class Player extends GameObject {
     		playerCoin = 0;
     	}
     }
-	
+
 	public int getPlayerCoin() {
-    	
+
 		return playerCoin;
     }
 	// add gravity to player, which is a downward force
@@ -204,7 +204,7 @@ public abstract class Player extends GameObject {
 			keyLocker.lockKey(JUMP_KEY);
 			playerState = PlayerState.JUMPING;
 		}
-		
+
 		else if ((Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
 			keyLocker.lockKey(JUMP_KEY2);
 			playerState = PlayerState.JUMPING;
@@ -253,7 +253,7 @@ public abstract class Player extends GameObject {
 			keyLocker.lockKey(JUMP_KEY);
 			playerState = PlayerState.JUMPING;
 		}
-		
+
 		if ((Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
 			keyLocker.lockKey(JUMP_KEY2);
 			playerState = PlayerState.JUMPING;
@@ -280,7 +280,7 @@ public abstract class Player extends GameObject {
 			keyLocker.lockKey(JUMP_KEY);
 			playerState = PlayerState.JUMPING;
 		}
-		
+
 		if ((Keyboard.isKeyDown(JUMP_KEY2) && !keyLocker.isKeyLocked(JUMP_KEY2))) {
 			keyLocker.lockKey(JUMP_KEY2);
 			playerState = PlayerState.JUMPING;
@@ -321,33 +321,37 @@ public abstract class Player extends GameObject {
             if (previousY > Math.round(y)) {
             	if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_LEFT_KEY2)){
             		currentAnimationName = facingDirection == Direction.LEFT ? "JUMP_LEFT" : "JUMP_LEFT";
+								facingDirection = Direction.LEFT;
             	}
-            	
+
             	else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY2)){
             		currentAnimationName = facingDirection == Direction.RIGHT ? "JUMP_RIGHT" : "JUMP_RIGHT";
+								facingDirection = Direction.RIGHT;
             	}
-     
+
             } else {
             	if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_LEFT_KEY2)){
-        		currentAnimationName = facingDirection == Direction.LEFT ? "FALL_LEFT" : "FALL_LEFT";
+        				currentAnimationName = facingDirection == Direction.LEFT ? "FALL_LEFT" : "FALL_LEFT";
+								facingDirection = Direction.LEFT;
             	}
-            	
+
             	else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY2)){
             		currentAnimationName = facingDirection == Direction.RIGHT ? "FALL_RIGHT" : "FALL_RIGHT";
+								facingDirection = Direction.RIGHT;
             	}
         	}
 
             // allows you to move left and right while in the air
 
             if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_LEFT_KEY2) ^ (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY2))) {
-			
+
             		if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || (Keyboard.isKeyDown(MOVE_LEFT_KEY2))) {
                 		moveAmountX -= walkSpeed;
             		} else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY) || (Keyboard.isKeyDown(MOVE_RIGHT_KEY2))) {
                 		moveAmountX += walkSpeed;
             		}
 			}
-   
+
 
             // if player is falling, increases momentum as player falls so it falls faster over time
             if (moveAmountY > 0) {
