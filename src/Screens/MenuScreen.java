@@ -87,6 +87,7 @@ public class MenuScreen extends Screen {
     			if(rect.contains(Keyboard.getMousePos())){
     				currentMenuItemHovered = rect.getItemPos();
     				if(Keyboard.getMousePressed()) {
+    					
     					menuItemSelected = currentMenuItemHovered;
     					if (menuItemSelected == 0) {
     		                screenCoordinator.setGameState(GameState.LEVEL);
@@ -115,7 +116,13 @@ public class MenuScreen extends Screen {
         //System.out.println(currentMenuItemHovered);
         // if down is pressed on last menu item or up is pressed on first menu item, "loop" the selection back around to the beginning/end
         
-
+        if (Keyboard.isKeyUp(Key.SPACE)) {
+            keyLocker.unlockKey(Key.SPACE);
+        }
+        
+        if (Keyboard.isKeyUp(Key.ENTER)) {
+            keyLocker.unlockKey(Key.ENTER);
+        }
         // if space is pressed on menu item, change to appropriate screen based on which menu item was chosen
         
         if ((!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) || (!keyLocker.isKeyLocked(Key.ENTER) && Keyboard.isKeyDown(Key.ENTER))) {
@@ -142,7 +149,7 @@ public class MenuScreen extends Screen {
     }
     
     public void mouseOrKeyboard() {
-    	if(Keyboard.getMousePos() != lastMovedMousePos) {
+    	if(Keyboard.getMousePos() != lastMovedMousePos || Keyboard.getMousePressed()) {
     		selectViaMouse();
     		lastMovedMousePos = Keyboard.getMousePos();
     	}else {
