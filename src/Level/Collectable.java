@@ -55,6 +55,11 @@ public class Collectable extends MapEntity{
 	        player.incrementCoin(this);
 	    	
 	    }
+	    
+//	    public void playAudio(String str)
+//	    {
+//	    	Utils.Audio.playAudio(str);
+//	    }
 	
 
 }
