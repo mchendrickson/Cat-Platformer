@@ -13,6 +13,14 @@ public class GraphicsHandler {
 
     public void setGraphics(Graphics2D g) {
         this.g = g;
+        
+    }
+    public int getFontWidth(Font font, String text) {
+    	return g.getFontMetrics(font).stringWidth(text);
+    }
+    
+    public int getFontHeight(Font font) {
+    	return g.getFontMetrics(font).getHeight();
     }
 
     public void drawImage(BufferedImage image, int x, int y) {
