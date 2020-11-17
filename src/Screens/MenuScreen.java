@@ -51,6 +51,8 @@ public class MenuScreen extends Screen {
         menuItemSelected = -1;
         keyLocker.lockKey(Key.SPACE);
         keyLocker.lockKey(Key.ENTER);
+        
+        //Add all of our sprites to a list so we can get their coordinates
         spriteFontList = new LinkedList<SpriteFont>();
         spriteFontList.add(playGame);
         spriteFontList.add(credits);
@@ -59,8 +61,9 @@ public class MenuScreen extends Screen {
         
     }
     
+    //Get the bounds for each of our SpriteFonts, and then create rectangles from those bounds, then create a list of those rectangles.
     public void createBounds() {
-    	//System.out.println(spriteFontList.get(2).getWidth() + spriteFontList.get(2).getX() + " " + spriteFontList.get(2).getText() + " " + Keyboard.getMousePos()); 
+    	
     	int itemPos = 0;
     	rectList = new LinkedList<SpriteFontRectangle>();
     	for(SpriteFont font : spriteFontList) {
@@ -69,23 +72,28 @@ public class MenuScreen extends Screen {
     		fontRect.width = (int) font.getWidth();
     		fontRect.height = (int) font.getHeight();
     		fontRect.setSpriteFont(font);
+    		
+    		//itemPos tells us what scene number to load when we click the spritefont
     		fontRect.setItemPos(itemPos);
     		itemPos++;
-    		//System.out.println(fontRect.getSize() + " " + fontRect.getBounds());
     		rectList.add(fontRect);
     	}
     }
     
     public void selectViaMouse() {
+    	//Get the bounds
     	createBounds();
     	
+    	//For all the spritefonts, check if the mouse position lies inside the rectangle, if so and we click, load the level
     	for(SpriteFontRectangle rect : rectList) {
     		
+    		//if the width is zero, we didn't add them correctly
     		if(rect.width != 0) {
-    		//System.out.println(rectList);
-    		
+    			
     			if(rect.contains(Keyboard.getMousePos())){
     				currentMenuItemHovered = rect.getItemPos();
+    				
+    				//Key press decides to open the level
     				if(Keyboard.getMousePressed()) {
     					
     					menuItemSelected = currentMenuItemHovered;
@@ -104,6 +112,8 @@ public class MenuScreen extends Screen {
     	}
     	
     }
+    
+    
     public void selectViaKeyboard() {
     	// if down or up is pressed, change menu item "hovered" over (blue square in front of text will move along with currentMenuItemHovered changing)
         if ((Keyboard.isKeyDown(Key.DOWN) || Keyboard.isKeyDown(Key.S)) && keyTimer.isTimeUp()) {
@@ -139,15 +149,13 @@ public class MenuScreen extends Screen {
     }
     
     public void update() {
-        // update background map (to play tile animations)
-    	
+        // update background map (to play tile animations)	
     	background.update(null);
-       //selectViaKeyboard();
-        //System.out.println(Keyboard.getMousePos() + " " + Keyboard.getMousePressed());
         mouseOrKeyboard();
         
     }
     
+    //When we move the mouse, we want to disable movement via the W, S, and arrow keys
     public void mouseOrKeyboard() {
     	if(Keyboard.getMousePos() != lastMovedMousePos || Keyboard.getMousePressed()) {
     		selectViaMouse();
@@ -156,6 +164,7 @@ public class MenuScreen extends Screen {
     		selectViaKeyboard();
     	}
     	
+    	//If we cycle to high or too low with keys, cycle back to the bottom or top respectively
     	if (currentMenuItemHovered > 2) {
             currentMenuItemHovered = 0;
         } else if (currentMenuItemHovered == 1) {
@@ -195,6 +204,7 @@ public class MenuScreen extends Screen {
         credits.draw(graphicsHandler);
         instructions.draw(graphicsHandler);
         
+        //Set the width and height for our rectangles by getting the literal width from the pixels the font takes up
         playGame.setWidth(graphicsHandler.getFontWidth(playGame.getFont(), playGame.getText()));
         credits.setWidth(graphicsHandler.getFontWidth(credits.getFont(), credits.getText()));
         instructions.setWidth(graphicsHandler.getFontWidth(instructions.getFont(), instructions.getText()));

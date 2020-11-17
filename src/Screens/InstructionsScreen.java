@@ -33,22 +33,22 @@ public class InstructionsScreen extends Screen {
         background = new TitleScreenMap();
         background.setAdjustCamera(false);
         instructionsLabel = new SpriteFont("INSTRUCTIONS", 15, 35, "Comic Sans", 30, new Color(49, 207, 240));
-        movementLabel = new SpriteFont("Move using either the WASD keys or the Arrow keys", 15, 140, "Comic Sans", 20, new Color(255, 215, 0));
-        objectiveLabel = new SpriteFont("Collect coins and avoid the enemies until you reach the golden cube to pass the level", 15, 220, "Comic Sans",20, new Color(255, 215, 0));
-        walrusLabel = new SpriteFont("Press space to interact with the Walruses", 15, 300, "Comic Sans",20, new Color(255, 215, 0));
+        movementLabel = new SpriteFont("Move using either the WASD keys or the Arrow keys", 15, 140, "Comic Sans", 25, new Color(255, 215, 0));
+        objectiveLabel = new SpriteFont("Collect coins and avoid the enemies until you reach \nthe golden cube to pass the level", 15, 220, "Comic Sans",25, new Color(255, 215, 0));
+        walrusLabel = new SpriteFont("Press space to interact with the Walruses", 15, 320, "Comic Sans", 25, new Color(255, 215, 0));
         returnInstructionsLabel = new SpriteFont("Press Space to return to the menu", 15, 560, "Comic Sans", 30, new Color(49, 207, 240));
         
         instructionsLabel.setOutlineColor(Color.black);
         instructionsLabel.setOutlineThickness(3);
         
         movementLabel.setOutlineColor(Color.black);
-        movementLabel.setOutlineThickness(2);
+        movementLabel.setOutlineThickness(2.5f);
         
         objectiveLabel.setOutlineColor(Color.black);
-        objectiveLabel.setOutlineThickness(2);
+        objectiveLabel.setOutlineThickness(2.5f);
         
         walrusLabel.setOutlineColor(Color.black);
-        walrusLabel.setOutlineThickness(2);
+        walrusLabel.setOutlineThickness(2.5f);
         
         returnInstructionsLabel.setOutlineColor(Color.black);
         returnInstructionsLabel.setOutlineThickness(2);
@@ -73,7 +73,7 @@ public class InstructionsScreen extends Screen {
     	background.draw(graphicsHandler);
     	instructionsLabel.draw(graphicsHandler);
         movementLabel.draw(graphicsHandler);
-        objectiveLabel.draw(graphicsHandler);
+        objectiveLabel.drawWithParsedNewLines(graphicsHandler);
         walrusLabel.draw(graphicsHandler);
         returnInstructionsLabel.draw(graphicsHandler);
     }
