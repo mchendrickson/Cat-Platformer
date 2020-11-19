@@ -153,7 +153,6 @@ public abstract class Player extends GameObject {
 			break;
 		case JUMPING:
 			playerJumping();
-			//Audio.playAudio("C:\\Users\\andre\\eclipse-workspace\\SER-225-Game-Master\\Resources\\jump.wav");
 			break;
 		case ATTACKING:
 			playerAttacking();
@@ -306,6 +305,7 @@ public abstract class Player extends GameObject {
                     jumpForce = 0;
                 }
             }
+            Audio.playAudio("jump.wav");
         }
 
         // if player is in air (currently in a jump) and has more jumpForce, continue sending player upwards
@@ -412,7 +412,6 @@ public abstract class Player extends GameObject {
 			// if map entity is an enemy, kill player on touch
 			if (mapEntity instanceof Enemy) {
 				setPlayerState(PlayerState.JUMPING);
-				Audio.playAudio("Ow.wav");
 				if (hurtStopWatch.isTimeUp()) {
 
 					hurtStopWatch.setWaitTime(200);
@@ -426,6 +425,7 @@ public abstract class Player extends GameObject {
 				levelState = LevelState.PLAYER_DEAD;
 			}
 		}
+		Audio.playAudio("meow.wav");
 	}
 
 	// other entities can call this to tell the player they beat a level
@@ -452,7 +452,7 @@ public abstract class Player extends GameObject {
 			// tell all player listeners that the player has finished the level
 			for (PlayerListener listener : listeners) {
 				listener.onLevelCompleted();
-				Audio.playAudio("congratulations.wav");
+				Audio.playAudio("levelcomplete.wav");
 			}
 		}
 	}

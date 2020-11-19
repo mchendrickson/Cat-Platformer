@@ -45,35 +45,7 @@ public class Audio {
 			//System.exit(1);
 		}
 		
-//		format = inputStream.getFormat();
-//		
-//		DataLine.Info dataInfo = new DataLine.Info(SourceDataLine.class, format);
-//		try {
-//			dLine = (SourceDataLine) AudioSystem.getLine(dataInfo);
-//			dLine.open(format);
-//		} 
-//		catch (LineUnavailableException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			//System.exit(1);
-//		}
-//		
-//		dLine.start();
-		
-		
-//		int nBytesRead = 0;
-//        byte[] abData = new byte[BUFFER_SIZE];
-//        while (nBytesRead != -1) {
-//            try {
-//                nBytesRead = inputStream.read(abData, 0, abData.length);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            if (nBytesRead >= 0) {
-//                @SuppressWarnings("unused")
-//                int nBytesWritten = dLine.write(abData, 0, nBytesRead);
-//            }
-//	}
+
 
 	}
 	
