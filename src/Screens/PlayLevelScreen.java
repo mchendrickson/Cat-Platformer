@@ -18,6 +18,7 @@ import Maps.PlatformMap;
 import Maps.TestMap;
 import Maps.TreesMap;
 import Maps.TutorialMap;
+import Maps.UndergroundMap;
 import Players.Cat;
 import SpriteFont.SpriteFont;
 import Utils.Stopwatch;
@@ -39,11 +40,13 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         this.screenCoordinator = screenCoordinator;
         mapList = new LinkedList<Map>();
         mapList.add(new TutorialMap());
+        mapList.add(new TestMap());
         mapList.add(new TreesMap());
         mapList.add(new PlatformMap());
         mapList.add(new HillsMap());
-        mapList.add(new TestMap());
+        mapList.add(new UndergroundMap());
         
+      
     }
 
     public void initialize() {
