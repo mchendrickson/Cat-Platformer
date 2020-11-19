@@ -263,6 +263,8 @@ public abstract class Player extends GameObject {
 		else if (Keyboard.isKeyDown(CROUCH_KEY) || Keyboard.isKeyDown(CROUCH_KEY2)) {
 			playerState = PlayerState.CROUCHING;
 		}
+		
+		if
 	}
 
 	// player CROUCHING state logic
