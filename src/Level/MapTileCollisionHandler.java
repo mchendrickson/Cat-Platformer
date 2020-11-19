@@ -71,6 +71,9 @@ public class MapTileCollisionHandler {
     private static boolean hasCollidedWithMapTile(GameObject gameObject, MapTile mapTile, Direction direction) {
         switch (mapTile.getTileType()) {
             case PASSABLE:
+                if (mapTile.getTileIndex() == 15) {
+            		    gameObject.setLevelState(LevelState.PLAYER_DEAD);
+            	  }
                 return false;
             case NOT_PASSABLE:
                 return gameObject.intersects(mapTile);
