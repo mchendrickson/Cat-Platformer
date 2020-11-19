@@ -2,6 +2,7 @@ package Game;
 
 import Engine.GameWindow;
 import Engine.ScreenManager;
+import Level.Audio;
 
 /*
  * The game starts here
@@ -21,6 +22,10 @@ public class Game {
         gameWindow.setScreenCoordinator(screenCoordinator);
         ScreenManager screenManager = gameWindow.getScreenManager();
         screenManager.setCurrentScreen(screenCoordinator);
+        
+        Audio.playAudio("theme.wav");
+        
+        
        
     }
 }

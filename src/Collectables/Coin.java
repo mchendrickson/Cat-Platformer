@@ -57,7 +57,9 @@ public class Coin extends Collectable{
         super.touchedPlayer(player);
         this.mapEntityStatus = MapEntityStatus.REMOVED;
         
-        Audio.playAudio("\\Resources\\coincollect.wav");
+        //Audio.playAudio("C:\\Users\\andre\\eclipse-workspace\\SER-225-Game-Master\\Resources\\coincollect.wav");
+        Audio.playAudio("coincollect.wav");
+
      
     }
 	

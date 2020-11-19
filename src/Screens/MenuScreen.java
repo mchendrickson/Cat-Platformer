@@ -3,6 +3,7 @@ package Screens;
 import Engine.*;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Level.Audio;
 import Level.Map;
 import Maps.TitleScreenMap;
 import SpriteFont.SpriteFont;
@@ -46,6 +47,7 @@ public class MenuScreen extends Screen {
         keyTimer.setWaitTime(200);
         menuItemSelected = -1;
         keyLocker.lockKey(Key.SPACE);
+        
         
     }
 

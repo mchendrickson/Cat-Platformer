@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
@@ -23,6 +24,7 @@ public class Audio {
 	{
 		try {
 			audioFile = new File(filename);
+			//audioFileName = .getClass().getResourceAsStream(filename);
 		}
 		catch(Exception e)
 		{
@@ -31,7 +33,11 @@ public class Audio {
 		}
 		try
 		{
+			//inputStream = AudioSystem.getAudioInputStream(audioFile);
 			inputStream = AudioSystem.getAudioInputStream(audioFile);
+			Clip c = AudioSystem.getClip();
+			c.open(inputStream);
+			c.start();
 		}
 		catch(Exception e)
 		{
@@ -39,34 +45,35 @@ public class Audio {
 			//System.exit(1);
 		}
 		
-		format = inputStream.getFormat();
+//		format = inputStream.getFormat();
+//		
+//		DataLine.Info dataInfo = new DataLine.Info(SourceDataLine.class, format);
+//		try {
+//			dLine = (SourceDataLine) AudioSystem.getLine(dataInfo);
+//			dLine.open(format);
+//		} 
+//		catch (LineUnavailableException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			//System.exit(1);
+//		}
+//		
+//		dLine.start();
 		
-		DataLine.Info dataInfo = new DataLine.Info(SourceDataLine.class, format);
-		try {
-			dLine = (SourceDataLine) AudioSystem.getLine(dataInfo);
-			dLine.open(format);
-		} 
-		catch (LineUnavailableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			//System.exit(1);
-		}
 		
-		dLine.start();
-		
-		int nBytesRead = 0;
-        byte[] abData = new byte[BUFFER_SIZE];
-        while (nBytesRead != -1) {
-            try {
-                nBytesRead = inputStream.read(abData, 0, abData.length);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (nBytesRead >= 0) {
-                @SuppressWarnings("unused")
-                int nBytesWritten = dLine.write(abData, 0, nBytesRead);
-            }
-	}
+//		int nBytesRead = 0;
+//        byte[] abData = new byte[BUFFER_SIZE];
+//        while (nBytesRead != -1) {
+//            try {
+//                nBytesRead = inputStream.read(abData, 0, abData.length);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            if (nBytesRead >= 0) {
+//                @SuppressWarnings("unused")
+//                int nBytesWritten = dLine.write(abData, 0, nBytesRead);
+//            }
+//	}
 
 	}
 	
