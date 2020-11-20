@@ -14,12 +14,14 @@ import Game.ScreenCoordinator;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 /*
  * This is where the game loop starts
  * The JPanel uses a timer to continually call cycles of update and draw
  */
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel{
 	// loads Screens on to the JPanel
 	// each screen has its own update and draw methods defined to handle a "section" of the game.
 	private ScreenManager screenManager;
@@ -45,7 +47,7 @@ public class GamePanel extends JPanel {
 
 		// attaches Keyboard class's keyListener to this JPanel
 		this.addKeyListener(Keyboard.getKeyListener());
-
+		
 		graphicsHandler = new GraphicsHandler();
 		//System.out.println(secondScreenManager.getCurrentScreen().getClass());
 		screenManager = new ScreenManager();
@@ -133,4 +135,5 @@ public class GamePanel extends JPanel {
 		this.screenCoordinator = screenCoordinator;
 		
 	}
+
 }

@@ -10,6 +10,8 @@ public class SpriteFont {
 	protected Font font;
 	protected float x;
 	protected float y;
+	protected float width;
+	protected float height;
 	protected Color color;
 	protected Color outlineColor;
 	protected float outlineThickness = 1f;
@@ -22,6 +24,22 @@ public class SpriteFont {
 		this.color = color;
 	}
 
+	public void setWidth(float width) {
+		this.width = width;
+	}
+	public float getWidth() {
+		return width;
+	}
+	public float getHeight() {
+		return height;
+	}
+	public void setHeight(float height) {
+		this.height = height;
+	}
+	public Font getFont() {
+		return font;
+	}
+	
 	public void setColor(Color color) {
 		this.color = color;
 	}
