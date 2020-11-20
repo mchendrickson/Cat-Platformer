@@ -58,8 +58,11 @@ public class TestMap extends Map {
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
-
-        npcs.add(new Walrus(getPositionByTileIndex(30, 10).subtract(new Point(0, 13)), this));
+        Walrus newWalrus = new Walrus(getPositionByTileIndex(30, 10).subtract(new Point(0, 13)), this);
+        newWalrus.setMessage("You're getting the hang of this!");
+        newWalrus.setTextLength(170);
+        npcs.add(newWalrus);
+        
 
         return npcs;
     }
