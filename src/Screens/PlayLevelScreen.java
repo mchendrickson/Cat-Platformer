@@ -38,12 +38,13 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
+        //A queue containing all of the maps
         mapList = new LinkedList<Map>();
-   //    mapList.add(new TutorialMap());
-    //    mapList.add(new TestMap());
-    //    mapList.add(new TreesMap());
-    //    mapList.add(new PlatformMap());
-     //  mapList.add(new HillsMap());
+        mapList.add(new TutorialMap());
+        mapList.add(new TestMap());
+        mapList.add(new TreesMap());
+        mapList.add(new PlatformMap());
+        mapList.add(new HillsMap());
         mapList.add(new UndergroundMap());
         
       
