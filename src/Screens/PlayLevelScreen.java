@@ -61,12 +61,12 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         this.player.setLocation(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         this.playLevelScreenState = PlayLevelScreenState.RUNNING;
         
-        // add text
+        // add the health and coin text to the level
         healthText = new SpriteFont("HEALTH: " + player.getPlayerHealth(), 50, 50, "Comic Sans", 30, new Color(49, 207, 240));
         healthText.setOutlineColor(Color.black);
         healthText.setOutlineThickness(3);
         
-        coinText = new SpriteFont("Coins: " + player.getPlayerHealth(), 50, 80, "Comic Sans", 30, new Color(237, 216, 73));
+        coinText = new SpriteFont("COINS: " + player.getPlayerHealth(), 50, 80, "Comic Sans", 30, new Color(237, 216, 73));
         coinText.setOutlineColor(Color.black);
         coinText.setOutlineThickness(3);
     }
@@ -149,6 +149,7 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
         playLevelScreenState = PlayLevelScreenState.PLAYER_DEAD;
     }
 
+    //if we lose a level, take the current queue, add the current map, then add the rest of them to the back
     public void resetLevel() {
         Queue tempMapList = new LinkedList<Map>();
         tempMapList.add(map);
@@ -159,14 +160,17 @@ public class PlayLevelScreen extends Screen implements PlayerListener {
     	initialize();
     }
 
+    //Update the health text each time we take damage
     public void updateHealthText() {
     	if(healthText.getText() != "HEALTH: " + player.getPlayerHealth()) {
     		healthText.setText("HEALTH: " + player.getPlayerHealth());
     	}
     }
+    
+    //Update the coin text each time we collect a coin
     public void updateCoinText() {
-    	if(coinText.getText() != "Coin: " + player.getPlayerCoin()) {
-    		coinText.setText("Coins: " + player.getPlayerCoin());
+    	if(coinText.getText() != "COINS: " + player.getPlayerCoin() +"/4") {
+    		coinText.setText("COINS: " + player.getPlayerCoin() + "/4");
     	}
     }
     public void goBackToMenu() {

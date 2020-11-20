@@ -9,12 +9,12 @@ import Game.ScreenCoordinator;
  * Just does some setup and exposes the gamePanel's screenManager to allow an external class to setup their own content and attach it to this engine.
  */
 public class GameWindow {
-	private JFrame gameWindow;
+	private MouseInputJFrame gameWindow;
 	private GamePanel gamePanel;
 	private ScreenCoordinator screenCoordinator;
 	
 	public GameWindow() {
-		gameWindow = new JFrame("Game");
+		gameWindow = new MouseInputJFrame("Game");
 		gamePanel = new GamePanel();
 		gamePanel.setFocusable(true);
 		gamePanel.requestFocusInWindow();

@@ -28,10 +28,23 @@ public class CreditsScreen extends Screen {
         // setup graphics on screen (background map, spritefont text)
         background = new TitleScreenMap();
         background.setAdjustCamera(false);
-        creditsLabel = new SpriteFont("Credits", 15, 35, "Times New Roman", 30, Color.white);
-        createdByLabel = new SpriteFont("Created by Alex Thimineur for Quinnipiac's SER225 Course.", 130, 140, "Times New Roman", 20, Color.white);
-        contributorsLabel = new SpriteFont("Thank you to QU Alumni Brian Carducci, Joseph White,\nand Alex Hutman for their contributions.", 60, 220, "Times New Roman",20, Color.white);
-        returnInstructionsLabel = new SpriteFont("Press Space to return to the menu", 20, 560, "Times New Roman", 30, Color.white);
+        creditsLabel = new SpriteFont("CREDITS", 15, 35, "Comic Sans", 30, new Color(49, 207, 240));
+        createdByLabel = new SpriteFont("Created by Alex Thimineur for Quinnipiac's SER 225 Course.", 15, 140, "Comic Sans", 25, new Color(255, 215, 0));
+        contributorsLabel = new SpriteFont("Modified during Quinnipiac's SER 225 Course by Matthew Hendrickson, \nAndrew DePass, Jake DeBroffe, Christian Cooper. \n\n\n\nThank you to QU Alumni Brian Carducci, Joseph White,\nand Alex Hutman for their contributions. ", 15, 250, "Comic Sans", 25, new Color(255, 215, 0));
+        returnInstructionsLabel = new SpriteFont("Press Space to return to the menu", 15, 560, "Comic Sans", 30, new Color(49, 207, 240));
+        
+        creditsLabel.setOutlineColor(Color.black);
+        creditsLabel.setOutlineThickness(3);
+        
+        createdByLabel.setOutlineColor(Color.black);
+        createdByLabel.setOutlineThickness(2.5f);
+        
+        contributorsLabel.setOutlineColor(Color.black);
+        contributorsLabel.setOutlineThickness(2.5f);
+        
+        returnInstructionsLabel.setOutlineColor(Color.black);
+        returnInstructionsLabel.setOutlineThickness(2);
+       
         keyLocker.lockKey(Key.SPACE);
     }
 

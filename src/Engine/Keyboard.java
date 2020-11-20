@@ -1,5 +1,6 @@
 package Engine;
 
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.EnumMap;
@@ -14,7 +15,9 @@ public class Keyboard {
 	// hashmaps keep track of if a key is currently down or up
 	private static final HashMap<Integer, Boolean> keyDown = new HashMap<>();
 	private static final HashMap<Integer, Boolean> keyUp = new HashMap<>();
-
+	
+	private static Point mousePos;
+	private static boolean isMouseButtonPressed;
 	// maps a Key enum type to its key code
 	private static final EnumMap<Key, Integer> keyMap = buildKeyMap();
 
@@ -39,6 +42,19 @@ public class Keyboard {
         }
     };
 
+    public static Point getMousePos() {
+    	return mousePos;
+    }
+    public static void setMousePos(Point point) {
+    	mousePos = point;
+    }
+    
+    public static boolean getMousePressed() {
+    	return isMouseButtonPressed;
+    }
+    public static void setMousePressed(boolean isPressed) {
+    	isMouseButtonPressed = isPressed;
+    }
 	// prevents Keyboard from being instantiated -- it's my way of making a "static" class like C# has
 	private Keyboard() { }
     
