@@ -35,6 +35,7 @@ public class GameObject extends AnimatedSprite {
 
 	// the map instance this game object "belongs" to.
 	protected Map map;
+	protected LevelState levelState;
 
 	public GameObject(SpriteSheet spriteSheet, float x, float y, String startingAnimation) {
 		super(spriteSheet, x, y, startingAnimation);
@@ -307,6 +308,10 @@ public class GameObject extends AnimatedSprite {
 	public int getYEndBound() {
 		return map.getHeightPixels();
 	}
+
+	public void setLevelState(LevelState levelState) {
+        this.levelState = levelState;
+  }
 
 	@Override
 	public void draw(GraphicsHandler graphicsHandler) {
