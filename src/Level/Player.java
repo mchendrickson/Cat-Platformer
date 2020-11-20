@@ -264,7 +264,6 @@ public abstract class Player extends GameObject {
 			playerState = PlayerState.CROUCHING;
 		}
 		
-		if
 	}
 
 	// player CROUCHING state logic
