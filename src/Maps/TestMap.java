@@ -71,8 +71,7 @@ public class TestMap extends Map {
     	collectables.add(new Coin(1300, 160));
      	collectables.add(new Coin(300, 270));
         collectables.add(new Coin(500, 360));
-    //	collectables.add(new Coin(700, 360));
-  //  	collectables.add(new Coin(900, 360));
+   
     	return collectables;
     }
     	

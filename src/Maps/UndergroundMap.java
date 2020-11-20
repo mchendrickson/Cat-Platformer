@@ -3,6 +3,7 @@ package Maps;
 import java.util.ArrayList;
 
 import Collectables.Coin;
+import Enemies.BatEnemy;
 import Enemies.BugEnemy;
 import Enemies.DinosaurEnemy;
 import Enemies.DragonEnemy;
@@ -33,8 +34,10 @@ public class UndergroundMap extends Map{
 	@Override
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-        enemies.add(new BugEnemy(getPositionByTileIndex(20, 14), Direction.RIGHT));
+        enemies.add(new BatEnemy(getPositionByTileIndex(10, 9), Direction.RIGHT));
+        enemies.add(new BatEnemy(getPositionByTileIndex(30, 9), Direction.RIGHT));
         enemies.add(new BugEnemy(getPositionByTileIndex(10, 14), Direction.RIGHT));
+        enemies.add(new BugEnemy(getPositionByTileIndex(20, 14), Direction.RIGHT));
         enemies.add(new DragonEnemy(getPositionByTileIndex(56, 14), Direction.RIGHT));
         enemies.add(new DragonEnemy(getPositionByTileIndex(60, 14), Direction.LEFT));
         enemies.add(new SkullEnemy(getPositionByTileIndex(75, 11), Direction.LEFT));
