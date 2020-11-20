@@ -30,8 +30,7 @@ public class TestMap extends Map {
         ArrayList<Enemy> enemies = new ArrayList<>();
         enemies.add(new BugEnemy(getPositionByTileIndex(15, 9), Direction.LEFT));
         enemies.add(new DinosaurEnemy(getPositionByTileIndex(19, 1).addY(2), getPositionByTileIndex(22, 1).addY(2), Direction.RIGHT));
-        enemies.add(new DragonEnemy(getPositionByTileIndex(13 ,9), Direction.LEFT));
-        enemies.add(new SkullEnemy(getPositionByTileIndex(12,9), Direction.LEFT));
+        enemies.add(new DragonEnemy(getPositionByTileIndex(17 ,9), Direction.LEFT));
         return enemies;
     }
 
@@ -68,12 +67,12 @@ public class TestMap extends Map {
     @Override
     public ArrayList<Collectable> loadCollectables() {
     	ArrayList<Collectable> collectables = new ArrayList<>();
-    	collectables.add(new Coin(150, 360));
-    	collectables.add(new Coin(400, 360));
-    	collectables.add(new Coin(300, 270));
-    	collectables.add(new Coin(500, 360));
-    	collectables.add(new Coin(700, 360));
-    	collectables.add(new Coin(900, 360));
+    	collectables.add(new Coin(655, 300));
+    	collectables.add(new Coin(1300, 160));
+     	collectables.add(new Coin(300, 270));
+        collectables.add(new Coin(500, 360));
+    //	collectables.add(new Coin(700, 360));
+  //  	collectables.add(new Coin(900, 360));
     	return collectables;
     }
     	
