@@ -1,8 +1,10 @@
 package Game;
 
 import Engine.DefaultScreen;
+
 import Engine.GraphicsHandler;
 import Engine.Screen;
+import Level.Audio;
 import Screens.CreditsScreen;
 import Screens.InstructionsScreen;
 import Screens.MenuScreen;
@@ -23,6 +25,7 @@ public class ScreenCoordinator extends Screen {
 
 	public GameState getGameState() {
 		return gameState;
+		
 	}
 
 	// Other Screens can set the gameState of this class to force it to change the currentScreen
@@ -64,6 +67,7 @@ public class ScreenCoordinator extends Screen {
 			// call the update method for the currentScreen
 			currentScreen.update();
 		} while (previousGameState != gameState);
+		
 	}
 	public PlayLevelScreenState getScreenState() {
 		PlayLevelScreen temp;
@@ -79,4 +83,7 @@ public class ScreenCoordinator extends Screen {
 	public Screen getCurrentScreen() {
 		return currentScreen;
 	}
+
+	
+	
 }

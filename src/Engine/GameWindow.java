@@ -3,6 +3,7 @@ package Engine;
 import javax.swing.*;
 
 import Game.ScreenCoordinator;
+import Level.Audio;
 
 /*
  * The JFrame that holds the GamePanel
