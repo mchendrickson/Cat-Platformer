@@ -33,11 +33,7 @@ public class Walrus extends NPC {
         setMessage("Hello!");
         interactMessage = new SpriteFont("Press Space to Interact",getX(), getY() - 10, "Arial", 12, Color.BLACK);
         textLength = 130;
-        messageQueue = new LinkedList<SpriteFont>();
-        messageQueue.add(new SpriteFont("This is the first message", getX(), getY() - 10, "Arial", 12, Color.BLACK));
-        messageQueue.add(new SpriteFont("This is the second message", getX(), getY() - 10, "Arial", 12, Color.BLACK));
-        messageQueue.add(new SpriteFont("This is the third message", getX(), getY() - 10, "Arial", 12, Color.BLACK));        
-
+       
     }
     
 

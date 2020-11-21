@@ -30,7 +30,7 @@ public class HillsMap extends Map{
         enemies.add(new DinosaurEnemy(getPositionByTileIndex(16, 18), getPositionByTileIndex(20,18), Direction.RIGHT));
         enemies.add(new BugEnemy(getPositionByTileIndex(12, 22), Direction.LEFT));    
         enemies.add(new BugEnemy(getPositionByTileIndex(9, 22), Direction.LEFT));
-        enemies.add(new DragonEnemy(getPositionByTileIndex(68, 27), Direction.LEFT));
+        enemies.add(new DinosaurEnemy(getPositionByTileIndex(73, 21), getPositionByTileIndex(76,21), Direction.RIGHT));
         enemies.add(new DragonEnemy(getPositionByTileIndex(46, 16), Direction.RIGHT));
         enemies.add(new SkullEnemy(getPositionByTileIndex(90, 19), Direction.RIGHT));
         enemies.add(new SkullEnemy(getPositionByTileIndex(80, 19), Direction.LEFT));
@@ -56,7 +56,10 @@ public class HillsMap extends Map{
     public ArrayList<Collectable> loadCollectables() {
     	ArrayList<Collectable> collectables = new ArrayList<>();
     	collectables.add(new Coin(getPositionByTileIndex(17, 15)));
-    	collectables.add(new Coin(getPositionByTileIndex(49, 11)));
+    	collectables.add(new Coin(getPositionByTileIndex(49, 10)));
+    	collectables.add(new Coin(getPositionByTileIndex(40, 15)));
+    	collectables.add(new Coin(getPositionByTileIndex(67, 20)));
+    	collectables.add(new Coin(getPositionByTileIndex(85, 15)));
     	return collectables;
     }
 
