@@ -24,16 +24,13 @@ public class Audio {
 	{
 		try {
 			audioFile = new File(filename);
-			//audioFileName = .getClass().getResourceAsStream(filename);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			//System.exit(1);
 		}
 		try
 		{
-			//inputStream = AudioSystem.getAudioInputStream(audioFile);
 			inputStream = AudioSystem.getAudioInputStream(audioFile);
 			Clip c = AudioSystem.getClip();
 			c.open(inputStream);
@@ -42,7 +39,6 @@ public class Audio {
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			//System.exit(1);
 		}
 		
 

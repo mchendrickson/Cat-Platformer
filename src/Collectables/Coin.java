@@ -57,16 +57,12 @@ public class Coin extends Collectable{
         super.touchedPlayer(player);
         this.mapEntityStatus = MapEntityStatus.REMOVED;
         
-        //Audio.playAudio("C:\\Users\\andre\\eclipse-workspace\\SER-225-Game-Master\\Resources\\coincollect.wav");
         Audio.playAudio("coincollect.wav");
 
      
     }
 	
-//	private void playAudio(String string) {
-//		playAudio(string);
-//		
-//	}
+
 
 	@Override
 	 public HashMap<String, Frame[]> getAnimations(SpriteSheet spriteSheet) {
@@ -85,57 +81,6 @@ public class Coin extends Collectable{
 	           
 	        }};
 	    }
-	 
-//	 public static void playAudio(String filename)
-//		{
-//			try {
-//				audioFile = new File(filename);
-//			}
-//			catch(Exception e)
-//			{
-//				e.printStackTrace();
-//				//System.exit(1);
-//			}
-//			try
-//			{
-//				inputStream = AudioSystem.getAudioInputStream(audioFile);
-//			}
-//			catch(Exception e)
-//			{
-//				e.printStackTrace();
-//				//System.exit(1);
-//			}
-//			
-//			format = inputStream.getFormat();
-//			
-//			DataLine.Info dataInfo = new DataLine.Info(SourceDataLine.class, format);
-//			try {
-//				dLine = (SourceDataLine) AudioSystem.getLine(dataInfo);
-//				dLine.open(format);
-//			} 
-//			catch (LineUnavailableException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//				//System.exit(1);
-//			}
-//			
-//			dLine.start();
-//			
-//			int nBytesRead = 0;
-//	        byte[] abData = new byte[BUFFER_SIZE];
-//	        while (nBytesRead != -1) {
-//	            try {
-//	                nBytesRead = inputStream.read(abData, 0, abData.length);
-//	            } catch (IOException e) {
-//	                e.printStackTrace();
-//	            }
-//	            if (nBytesRead >= 0) {
-//	                @SuppressWarnings("unused")
-//	                int nBytesWritten = dLine.write(abData, 0, nBytesRead);
-//	            }
-//		}
-//
-//		}
 	 
 	 
 }
