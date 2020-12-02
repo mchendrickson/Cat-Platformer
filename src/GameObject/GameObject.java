@@ -2,6 +2,7 @@ package GameObject;
 
 import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
+import Level.LevelState;
 import Level.Map;
 import Level.MapTileCollisionHandler;
 import Utils.Direction;
