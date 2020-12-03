@@ -23,10 +23,11 @@ public class Audio {
 	public static void playAudio(String filename)
 	{
 		try {
-			audioFile = new File(filename);
+			audioFile = new File("Resources/" + filename);
 		}
 		catch(Exception e)
 		{
+			
 			e.printStackTrace();
 		}
 		try
